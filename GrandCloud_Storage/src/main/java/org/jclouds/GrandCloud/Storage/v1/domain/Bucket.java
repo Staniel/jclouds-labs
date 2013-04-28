@@ -33,26 +33,26 @@ import com.google.common.collect.ImmutableList;
  */
 public class Bucket implements Comparable<Bucket>{
 
-    private final int id;
+    private final int maxkey;
     private final String name;
-    private final int ram;
-    private final List<Link> links;
+    private final boolean istruncated;
+    private final List<Content> contents;
 
     @ConstructorProperties({
-        "id", "name", "ram", "links"
+        "name", "maxkey", "istruncated", "contents"
     })
-    protected Bucket(int id, String name, int ram, List<Link> links) {
-        this.id = id;
+    protected Bucket(String name, int maxkey, boolean istruncated, List<Content> contents) {
         this.name = checkNotNull(name, "name required");
-        this.ram = ram;
-        this.links = links;
+        this.maxkey = maxkey;
+        this.istruncated = istruncated;
+        this.contents = contents;
     }
 
     /**
      * @return the id of this flavor
      */
-    public int getId() {
-        return this.id;
+    public int getMaxKey() {
+        return this.maxkey;
     }
 
     /**
@@ -65,20 +65,20 @@ public class Bucket implements Comparable<Bucket>{
     /**
      * @return the RAM amount for this flavor
      */
-    public int getRam() {
-        return this.ram;
+    public boolean isTruncated() {
+        return this.istruncated;
     }
 
     /**
      * @return the flavor links for this flavor. These are used during database instance creation.
      */
-    public List<Link> getLinks() {
-        return this.links;
+    public List<Content> getContents() {
+        return this.contents;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+        return Objects.hashCode(this.name);
     }
 
     @Override
@@ -86,12 +86,12 @@ public class Bucket implements Comparable<Bucket>{
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Bucket that = Bucket.class.cast(obj);
-        return Objects.equal(this.id, that.id);
+        return Objects.equal(this.name, that.name);
     }
 
     protected ToStringHelper string() {
         return Objects.toStringHelper(this)
-                .add("id", id).add("name", name).add("ram", ram);
+                .add("name", name).add("maxkey", maxkey).add("istruncated", istruncated);
     }
 
     @Override
@@ -105,7 +105,8 @@ public class Bucket implements Comparable<Bucket>{
             return 1;
         if (this == that)
             return 0;
-        return this.getId() > that.getId() ? +1 : this.getId() < this.getId() ? -1 : 0;
+        //return this.getName() > that.getName() ? +1 : this.getId() < this.getId() ? -1 : 0;
+        return 1;
     }
 
     public static Builder builder() { 
@@ -117,18 +118,11 @@ public class Bucket implements Comparable<Bucket>{
     }    
     
     public static class Builder {
-        protected int id;
         protected String name;
-        protected int ram;
-        protected List<Link> links;
+        protected int maxkey;
+        protected boolean istruncated;
+        protected List<Content> contents;
 
-        /** 
-         * @see Flavor#getId()
-         */
-        public Builder id(int id) {
-            this.id = id;
-            return this;
-        }
 
         /** 
          * @see Flavor#getName()
@@ -141,29 +135,37 @@ public class Bucket implements Comparable<Bucket>{
         /** 
          * @see Flavor#getRam()
          */
-        public Builder ram(int ram) {
-            this.ram = ram;
+        public Builder maxkey(int maxkey) {
+            this.maxkey = maxkey;
+            return this;
+        }
+        
+        /** 
+         * @see Flavor#isTruncated()
+         */
+        public Builder isTruncated(boolean istruncated) {
+            this.istruncated = istruncated;
             return this;
         }
 
         /** 
          * @see Flavor#getLinks()
          */
-        public Builder links(List<Link> links) {
-            this.links = ImmutableList.copyOf(links);
+        public Builder contents(List<Content> contents) {
+            this.contents = ImmutableList.copyOf(contents);
             return this;
         }
 
         public Bucket build() {
-            return new Bucket(id, name, ram, links);
+            return new Bucket(name, maxkey, istruncated, contents);
         }
 
         public Builder fromBucket(Bucket in) {
             return this
-                    .id(in.getId())
                     .name(in.getName())
-                    .ram(in.getRam())
-                    .links(in.getLinks());
+                    .maxkey(in.getMaxKey())
+                    .isTruncated(in.istruncated)
+                    .contents(in.getContents());
         }
     }    
 }

@@ -36,7 +36,7 @@ import org.testng.annotations.Test;
  *
  * @author Zack Shoylev
  */
-@Test(groups = "unit", testName = "FlavorApiExpectTest")
+@Test(groups = "unit", testName = "BucketApiExpectTest")
 public class BucketApiExpectTest extends BaseStorageApiExpectTest {
 
    public void testListBuckets() {

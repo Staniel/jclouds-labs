@@ -39,16 +39,17 @@ import com.google.common.collect.ImmutableSet;
  * @author Zack Shoylev
  */
 
-@Test(groups = "unit", testName = "ParseFlavorTest")
+@Test(groups = "unit", testName = "ParseBucketTest")
 public class ParseBucketListTest extends BaseSetParserTest<Bucket> {
 
    @Override
    public String resource() {
-      return "/flavor_list.json";
+      return "/bucket_list.xml";
    }
 
    @Override
-   @Consumes(MediaType.APPLICATION_JSON)
+   @Consumes(MediaType.APPLICATION_ATOM_XML)
+   @SelectXml("bucket")
    @SelectJson("flavors")
    public Set<Bucket> expected() {
       return ImmutableSet
