@@ -16,13 +16,13 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.jclouds.GrandCloud.Storage.v1.internal;
+package org.jclouds.grandcloud.storage.v1.internal;
 
 import java.util.Properties;
 
 import org.jclouds.apis.BaseApiLiveTest;
 import org.jclouds.openstack.keystone.v2_0.config.KeystoneProperties;
-import org.jclouds.GrandCloud.Storage.v1.StorageApi;
+import org.jclouds.grandcloud.storage.v1.StorageApi;
 
 /**
  * Tests behavior of RedDwarfApi

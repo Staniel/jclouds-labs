@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.jclouds.GrandCloud.Storage.v1.features;
+package org.jclouds.grandcloud.storage.v1.features;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNull;
@@ -26,9 +26,9 @@ import java.net.URI;
 import java.util.Set;
 
 import org.jclouds.http.HttpResponse;
-import org.jclouds.GrandCloud.Storage.v1.StorageApi;
-import org.jclouds.GrandCloud.Storage.v1.domain.Flavor;
-import org.jclouds.GrandCloud.Storage.v1.internal.BaseStorageApiExpectTest;
+import org.jclouds.grandcloud.storage.v1.StorageApi;
+import org.jclouds.grandcloud.storage.v1.domain.Bucket;
+import org.jclouds.grandcloud.storage.v1.internal.BaseStorageApiExpectTest;
 import org.testng.annotations.Test;
 
 /**
@@ -37,71 +37,71 @@ import org.testng.annotations.Test;
  * @author Zack Shoylev
  */
 @Test(groups = "unit", testName = "FlavorApiExpectTest")
-public class FlavorApiExpectTest extends BaseStorageApiExpectTest {
+public class BucketApiExpectTest extends BaseStorageApiExpectTest {
 
-   public void testListFlavors() {
+   public void testListBuckets() {
       URI endpoint = URI.create("http://172.16.0.1:8776/v1/3456/flavors");
-      FlavorApi api = requestsSendResponses(
+      BucketApi api = requestsSendResponses(
             keystoneAuthWithUsernameAndPasswordAndTenantName,
             responseWithKeystoneAccess,
             authenticatedGET().endpoint(endpoint).build(),
             HttpResponse.builder().statusCode(200).payload(payloadFromResource("/flavor_list.json")).build()
       ).getFlavorApiForZone("RegionOne");
 
-      Set<? extends Flavor> flavors = api.list().toSet();
+      Set<? extends Bucket> flavors = api.list().toSet();
       assertEquals(flavors.size(),6);
       assertEquals(flavors.iterator().next().getRam(), 512);
    }
 
-   public void testListFlavorsFail() {
+   public void testListBucketsFail() {
       URI endpoint = URI.create("http://172.16.0.1:8776/v1/3456/flavors");
-      FlavorApi api = requestsSendResponses(
+      BucketApi api = requestsSendResponses(
             keystoneAuthWithUsernameAndPasswordAndTenantName,
             responseWithKeystoneAccess,
             authenticatedGET().endpoint(endpoint).build(),
             HttpResponse.builder().statusCode(404).build()
       ).getFlavorApiForZone("RegionOne");
 
-      Set<? extends Flavor> flavors = api.list().toSet();
+      Set<? extends Bucket> flavors = api.list().toSet();
       assertTrue(flavors.isEmpty());
    }   
 
-   public void testGetFlavor() {
+   public void testGetBucket() {
       URI endpoint = URI.create("http://172.16.0.1:8776/v1/3456/flavors/1");
-      FlavorApi api = requestsSendResponses(
+      BucketApi api = requestsSendResponses(
             keystoneAuthWithUsernameAndPasswordAndTenantName,
             responseWithKeystoneAccess,
             authenticatedGET().endpoint(endpoint).build(),
             HttpResponse.builder().statusCode(200).payload(payloadFromResource("/flavor_get.json")).build()
       ).getFlavorApiForZone("RegionOne");
 
-      Flavor flavor = api.get(1);
+      Bucket flavor = api.get(1);
       assertEquals(flavor.getName(), "512MB Instance");
       assertEquals(flavor.getId(), 1);
       assertEquals(flavor.getRam(), 512);
       assertEquals(flavor.getLinks().size(), 2);
    }
    
-   public void testGetFlavorByAccountId() {
+   public void testGetBucketByAccountId() {
 	      URI endpoint = URI.create("http://172.16.0.1:8776/v1/3456/flavors/40806637803162");
 	      StorageApi redDwarfApi = requestsSendResponses(
                keystoneAuthWithUsernameAndPasswordAndTenantName,
                responseWithKeystoneAccess,
                authenticatedGET().endpoint(endpoint).build(),
                HttpResponse.builder().statusCode(200).payload(payloadFromResource("/flavor_list.json")).build() ); 
-	      FlavorApi api = redDwarfApi.getFlavorApiForZone("RegionOne");
+	      BucketApi api = redDwarfApi.getFlavorApiForZone("RegionOne");
 
-	      Set<? extends Flavor> flavors = api.list( redDwarfApi.getCurrentTenantId().get().getId() ).toSet();
-	      Flavor flavor = flavors.iterator().next();
+	      Set<? extends Bucket> flavors = api.list( redDwarfApi.getCurrentTenantId().get().getId() ).toSet();
+	      Bucket flavor = flavors.iterator().next();
 	      assertEquals(flavor.getName(), "512MB Instance");
 	      assertEquals(flavor.getId(), 1);
 	      assertEquals(flavor.getRam(), 512);
 	      assertEquals(flavor.getLinks().size(), 2);
 	   }
 
-   public void testGetFlavorFail() {
+   public void testGetBucketFail() {
       URI endpoint = URI.create("http://172.16.0.1:8776/v1/3456/flavors/12312");
-      FlavorApi api = requestsSendResponses(
+      BucketApi api = requestsSendResponses(
             keystoneAuthWithUsernameAndPasswordAndTenantName,
             responseWithKeystoneAccess,
             authenticatedGET().endpoint(endpoint).build(),

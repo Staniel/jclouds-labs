@@ -17,14 +17,14 @@
  * under the License.
  */
 
-package org.jclouds.GrandCloud.Storage.v1.features;
+package org.jclouds.grandcloud.storage.v1.features;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertNull;
 import static org.testng.Assert.assertTrue;
-import org.jclouds.GrandCloud.Storage.v1.domain.Flavor;
-import org.jclouds.GrandCloud.Storage.v1.internal.BaseStorageApiLiveTest;
+import org.jclouds.grandcloud.storage.v1.domain.Bucket;
+import org.jclouds.grandcloud.storage.v1.internal.BaseStorageApiLiveTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import com.google.common.collect.FluentIterable;
@@ -33,7 +33,7 @@ import com.google.common.collect.FluentIterable;
  * @author Zack Shoylev
  */
 @Test(groups = "live", testName = "FlavorApiLiveTest")
-public class FlavorApiLiveTest extends BaseStorageApiLiveTest {
+public class BucketApiLiveTest extends BaseStorageApiLiveTest {
 
     @Override
     @BeforeClass(groups = { "integration", "live" })
@@ -41,7 +41,7 @@ public class FlavorApiLiveTest extends BaseStorageApiLiveTest {
         super.setup();
     }
 
-    private void checkFlavor(Flavor flavor) {
+    private void checkBucket(Bucket flavor) {
         assertNotNull(flavor.getId(), "Id cannot be null for " + flavor);
         assertNotNull(flavor.getName(), "Name cannot be null for " + flavor);
     }
@@ -49,11 +49,11 @@ public class FlavorApiLiveTest extends BaseStorageApiLiveTest {
     @Test
     public void testListFlavorsByAccount() {
         for (String zone : api.getConfiguredZones()) {
-            FlavorApi flavorApi = api.getFlavorApiForZone(zone);
+        	BucketApi flavorApi = api.getFlavorApiForZone(zone);
 
-            FluentIterable<Flavor> response = flavorApi.list( api.getCurrentTenantId().get().getId() ); // tenant id, but referred to as account id. 
-            for (Flavor flavor : response) {
-                checkFlavor(flavor);
+            FluentIterable<Bucket> response = flavorApi.list( api.getCurrentTenantId().get().getId() ); // tenant id, but referred to as account id. 
+            for (Bucket flavor : response) {
+                checkBucket(flavor);
             }  
         }   
     }
@@ -61,17 +61,17 @@ public class FlavorApiLiveTest extends BaseStorageApiLiveTest {
     @Test
     public void testListFlavorsByAccountWhenAccountIdNotFound() {
         for (String zone : api.getConfiguredZones()) {
-            FlavorApi flavorApi = api.getFlavorApiForZone(zone);
+        	BucketApi flavorApi = api.getFlavorApiForZone(zone);
             assertTrue(flavorApi.list("9999").isEmpty());
         }
     }
 
     @Test
-    public void testGetFlavor() {
+    public void testGetBucket() {
         for (String zone : api.getConfiguredZones()) {
-            FlavorApi flavorApi = api.getFlavorApiForZone(zone);           
-            for (Flavor flavor : flavorApi.list()) {
-                Flavor flavorFromGet = flavorApi.get(flavor.getId());
+        	BucketApi flavorApi = api.getFlavorApiForZone(zone);           
+            for (Bucket flavor : flavorApi.list()) {
+            	Bucket flavorFromGet = flavorApi.get(flavor.getId());
                 assertEquals(flavorFromGet.getId(), flavor.getId());
                 assertEquals(flavorFromGet.getRam(), flavor.getRam());
                 assertEquals(flavorFromGet.getName(), flavor.getName());
@@ -81,9 +81,9 @@ public class FlavorApiLiveTest extends BaseStorageApiLiveTest {
     }
 
     @Test
-    public void testGetFlavorWhenNotFound() {
+    public void testGetBucketWhenNotFound() {
         for (String zone : api.getConfiguredZones()) {
-            FlavorApi flavorApi = api.getFlavorApiForZone(zone);
+        	BucketApi flavorApi = api.getFlavorApiForZone(zone);
             assertNull(flavorApi.get(9999));
         }
     }   

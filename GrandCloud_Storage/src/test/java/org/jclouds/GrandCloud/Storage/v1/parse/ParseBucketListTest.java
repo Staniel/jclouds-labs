@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.jclouds.GrandCloud.Storage.v1.parse;
+package org.jclouds.grandcloud.storage.v1.parse;
 
 import java.util.Set;
 
@@ -25,7 +25,7 @@ import javax.ws.rs.core.MediaType;
 
 import org.jclouds.http.Uris;
 import org.jclouds.json.BaseSetParserTest;
-import org.jclouds.GrandCloud.Storage.v1.domain.Flavor;
+import org.jclouds.grandcloud.storage.v1.domain.Bucket;
 import org.jclouds.openstack.v2_0.domain.Link;
 import org.jclouds.openstack.v2_0.domain.Link.Relation;
 import org.jclouds.rest.annotations.SelectJson;
@@ -40,7 +40,7 @@ import com.google.common.collect.ImmutableSet;
  */
 
 @Test(groups = "unit", testName = "ParseFlavorTest")
-public class ParseFlavorListTest extends BaseSetParserTest<Flavor> {
+public class ParseBucketListTest extends BaseSetParserTest<Bucket> {
 
    @Override
    public String resource() {
@@ -50,9 +50,9 @@ public class ParseFlavorListTest extends BaseSetParserTest<Flavor> {
    @Override
    @Consumes(MediaType.APPLICATION_JSON)
    @SelectJson("flavors")
-   public Set<Flavor> expected() {
+   public Set<Bucket> expected() {
       return ImmutableSet
-            .of(Flavor.builder()
+            .of(Bucket.builder()
                   .id(1)
                   .name("512MB Instance")
                   .ram(512)
@@ -61,7 +61,7 @@ public class ParseFlavorListTest extends BaseSetParserTest<Flavor> {
                           Link.create(Relation.BOOKMARK, Uris.uriBuilder("https://localhost:8778/flavors/1").build() )
                           ))
                   .build(),
-                  Flavor.builder()
+                  Bucket.builder()
                   .id(2)
                   .name("1GB Instance")
                   .ram(1024)
@@ -70,7 +70,7 @@ public class ParseFlavorListTest extends BaseSetParserTest<Flavor> {
                           Link.create(Relation.BOOKMARK, Uris.uriBuilder("https://localhost:8778/flavors/2").build() )
                           ))
                   .build(),
-                  Flavor.builder()
+                  Bucket.builder()
                   .id(3)
                   .name("2GB Instance")
                   .ram(2048)
@@ -79,7 +79,7 @@ public class ParseFlavorListTest extends BaseSetParserTest<Flavor> {
                           Link.create(Relation.BOOKMARK, Uris.uriBuilder("https://localhost:8778/flavors/3").build() )
                           ))
                   .build(),
-                  Flavor.builder()
+                  Bucket.builder()
                   .id(4)
                   .name("4GB Instance")
                   .ram(4096)
@@ -88,7 +88,7 @@ public class ParseFlavorListTest extends BaseSetParserTest<Flavor> {
                           Link.create(Relation.BOOKMARK, Uris.uriBuilder("https://localhost:8778/flavors/4").build() )
                           ))
                   .build(),
-                  Flavor.builder()
+                  Bucket.builder()
                   .id(5)
                   .name("8GB Instance")
                   .ram(8192)
@@ -97,7 +97,7 @@ public class ParseFlavorListTest extends BaseSetParserTest<Flavor> {
                           Link.create(Relation.BOOKMARK, Uris.uriBuilder("https://localhost:8778/flavors/5").build() )
                           ))
                   .build(),
-                  Flavor.builder()
+                  Bucket.builder()
                   .id(6)
                   .name("16GB Instance")
                   .ram(16384)

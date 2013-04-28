@@ -16,9 +16,9 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.jclouds.GrandCloud.Storage.v1.internal;
+package org.jclouds.grandcloud.storage.v1.internal;
 
-import org.jclouds.GrandCloud.Storage.v1.StorageApi;
+import org.jclouds.grandcloud.storage.v1.StorageApi;
 
 /**
  * Base class for writing Flavor Rest Api Expect tests

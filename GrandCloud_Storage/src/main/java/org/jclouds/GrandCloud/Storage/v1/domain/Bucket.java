@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.jclouds.GrandCloud.Storage.v1.domain;
+package org.jclouds.grandcloud.storage.v1.domain;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 import java.beans.ConstructorProperties;
@@ -31,7 +31,7 @@ import com.google.common.collect.ImmutableList;
  * 
  * @author Zack Shoylev
  */
-public class Flavor implements Comparable<Flavor>{
+public class Bucket implements Comparable<Bucket>{
 
     private final int id;
     private final String name;
@@ -41,7 +41,7 @@ public class Flavor implements Comparable<Flavor>{
     @ConstructorProperties({
         "id", "name", "ram", "links"
     })
-    protected Flavor(int id, String name, int ram, List<Link> links) {
+    protected Bucket(int id, String name, int ram, List<Link> links) {
         this.id = id;
         this.name = checkNotNull(name, "name required");
         this.ram = ram;
@@ -85,7 +85,7 @@ public class Flavor implements Comparable<Flavor>{
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
-        Flavor that = Flavor.class.cast(obj);
+        Bucket that = Bucket.class.cast(obj);
         return Objects.equal(this.id, that.id);
     }
 
@@ -100,7 +100,7 @@ public class Flavor implements Comparable<Flavor>{
     }
 
     @Override
-    public int compareTo(Flavor that) {
+    public int compareTo(Bucket that) {
         if (that == null)
             return 1;
         if (this == that)
@@ -113,7 +113,7 @@ public class Flavor implements Comparable<Flavor>{
     }
 
     public Builder toBuilder() { 
-        return new Builder().fromFlavor(this);
+        return new Builder().fromBucket(this);
     }    
     
     public static class Builder {
@@ -154,11 +154,11 @@ public class Flavor implements Comparable<Flavor>{
             return this;
         }
 
-        public Flavor build() {
-            return new Flavor(id, name, ram, links);
+        public Bucket build() {
+            return new Bucket(id, name, ram, links);
         }
 
-        public Builder fromFlavor(Flavor in) {
+        public Builder fromBucket(Bucket in) {
             return this
                     .id(in.getId())
                     .name(in.getName())

@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.jclouds.GrandCloud.Storage.v1.config;
+package org.jclouds.grandcloud.storage.v1.config;
 
 import java.net.URI;
 
@@ -30,8 +30,8 @@ import org.jclouds.json.config.GsonModule.DateAdapter;
 import org.jclouds.json.config.GsonModule.Iso8601DateAdapter;
 import org.jclouds.openstack.keystone.v2_0.domain.Access;
 import org.jclouds.openstack.keystone.v2_0.domain.Tenant;
-import org.jclouds.GrandCloud.Storage.v1.StorageApi;
-import org.jclouds.GrandCloud.Storage.v1.handlers.StorageErrorHandler;
+import org.jclouds.grandcloud.storage.v1.StorageApi;
+import org.jclouds.grandcloud.storage.v1.handlers.StorageErrorHandler;
 import org.jclouds.rest.ConfiguresHttpApi;
 import org.jclouds.rest.config.HttpApiModule;
 

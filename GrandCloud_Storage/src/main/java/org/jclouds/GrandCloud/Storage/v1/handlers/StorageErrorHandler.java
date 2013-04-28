@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.jclouds.GrandCloud.Storage.v1.handlers;
+package org.jclouds.grandcloud.storage.v1.handlers;
 
 import static org.jclouds.http.HttpUtils.closeClientButKeepContentStream;
 

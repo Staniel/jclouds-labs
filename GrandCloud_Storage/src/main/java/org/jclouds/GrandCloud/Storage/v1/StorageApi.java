@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.jclouds.GrandCloud.Storage.v1;
+package org.jclouds.grandcloud.storage.v1;
 
 import java.io.Closeable;
 import java.util.Set;
@@ -25,7 +25,7 @@ import org.jclouds.javax.annotation.Nullable;
 import org.jclouds.location.Zone;
 import org.jclouds.location.functions.ZoneToEndpoint;
 import org.jclouds.openstack.keystone.v2_0.domain.Tenant;
-import org.jclouds.GrandCloud.Storage.v1.features.FlavorApi;
+import org.jclouds.grandcloud.storage.v1.features.BucketApi;
 import org.jclouds.rest.annotations.Delegate;
 import org.jclouds.rest.annotations.EndpointParam;
 
@@ -50,7 +50,7 @@ public interface StorageApi extends Closeable{
     * Provides access to Flavor features.
     */
    @Delegate
-   FlavorApi getFlavorApiForZone(
+   BucketApi getFlavorApiForZone(
          @EndpointParam(parser = ZoneToEndpoint.class) @Nullable String zone);
    
    /**

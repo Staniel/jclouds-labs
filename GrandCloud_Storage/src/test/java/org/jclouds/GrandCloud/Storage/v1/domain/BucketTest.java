@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.jclouds.GrandCloud.Storage.v1.domain;
+package org.jclouds.grandcloud.storage.v1.domain;
 
 import org.jclouds.http.Uris;
 import org.jclouds.openstack.v2_0.domain.Link;
@@ -27,10 +27,10 @@ import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertFalse;
 
 @Test(groups = "unit", testName = "FlavorTest")
-public class FlavorTest {
+public class BucketTest {
    public void testFlavorForId() {
-      Flavor flavor1 = forId(1);
-      Flavor flavor2 = forId(2);
+	  Bucket flavor1 = forId(1);
+	  Bucket flavor2 = forId(2);
       assertEquals(flavor1.getId(), 1);
       assertEquals(flavor1.getName(), "small");
       assertFalse(flavor1.equals(flavor2));
@@ -43,8 +43,8 @@ public class FlavorTest {
     * 2. ram   = 512
     * 3. links = self, bookmark
     */
-   public static Flavor forId(int flavorId) {       
-       return Flavor.builder()
+   public static Bucket forId(int flavorId) {       
+       return Bucket.builder()
                .id(flavorId)
                .name("small")
                .ram(512)

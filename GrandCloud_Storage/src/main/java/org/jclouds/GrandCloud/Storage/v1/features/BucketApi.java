@@ -17,7 +17,7 @@
  * under the License.
  */
 
-package org.jclouds.GrandCloud.Storage.v1.features;
+package org.jclouds.grandcloud.storage.v1.features;
 
 import javax.inject.Named;
 import javax.ws.rs.Consumes;
@@ -29,7 +29,7 @@ import javax.ws.rs.core.MediaType;
 import org.jclouds.Fallbacks.EmptyFluentIterableOnNotFoundOr404;
 import org.jclouds.Fallbacks.NullOnNotFoundOr404;
 import org.jclouds.openstack.keystone.v2_0.filters.AuthenticateRequest;
-import org.jclouds.GrandCloud.Storage.v1.domain.Flavor;
+import org.jclouds.grandcloud.storage.v1.domain.Bucket;
 import org.jclouds.rest.annotations.Fallback;
 import org.jclouds.rest.annotations.RequestFilters;
 import org.jclouds.rest.annotations.SelectJson;
@@ -51,7 +51,7 @@ import com.google.common.collect.FluentIterable;
  */
 @SkipEncoding({'/', '='})
 @RequestFilters(AuthenticateRequest.class)
-public interface FlavorApi {
+public interface BucketApi {
    /**
     * Returns a summary list of Flavors.
     *
@@ -63,7 +63,7 @@ public interface FlavorApi {
    @SelectJson("flavors")
    @Consumes(MediaType.APPLICATION_JSON)
    @Fallback(EmptyFluentIterableOnNotFoundOr404.class)
-   FluentIterable<Flavor> list();
+   FluentIterable<Bucket> list();
    
    /**
     * Returns a Flavor by id
@@ -76,7 +76,7 @@ public interface FlavorApi {
    @SelectJson("flavor")
    @Consumes(MediaType.APPLICATION_JSON)
    @Fallback(NullOnNotFoundOr404.class)
-   Flavor get(@PathParam("id") int flavorId);
+   Bucket get(@PathParam("id") int flavorId);
    
    /**
     * Returns a list of Flavors by Account ID (Tenant Id)
@@ -89,5 +89,5 @@ public interface FlavorApi {
    @SelectJson("flavors")
    @Consumes(MediaType.APPLICATION_JSON)
    @Fallback(EmptyFluentIterableOnNotFoundOr404.class)
-   FluentIterable<Flavor> list(@PathParam("id") String accountId);
+   FluentIterable<Bucket> list(@PathParam("id") String accountId);
 }
