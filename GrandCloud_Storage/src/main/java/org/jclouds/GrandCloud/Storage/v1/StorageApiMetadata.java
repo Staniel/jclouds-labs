@@ -67,14 +67,14 @@ public class StorageApiMetadata extends BaseHttpApiMetadata<StorageApi> {
    public static class Builder extends BaseHttpApiMetadata.Builder<StorageApi, Builder> {
 
       protected Builder() {         
-          id("openstack-reddwarf")
-         .name("OpenStack RedDwarf API")
+          id("grandcloud-storage")
+         .name("GrandCloud Storage API")
          .identityName("${tenantName}:${userName} or ${userName}, if your keystone supports a default tenant")
          .credentialName("${password}")
          .endpointName("Keystone base URL ending in /v2.0/")
          .documentation(URI.create("http://api.openstack.org/"))
          .version("1.0")
-         .defaultEndpoint("http://localhost:5000/v2.0/")
+         .defaultEndpoint("http://storage.grandcloud.cn")
          .defaultProperties(StorageApiMetadata.defaultProperties())
          .defaultModules(ImmutableSet.<Class<? extends Module>>builder()
                                      .add(AuthenticationApiModule.class)

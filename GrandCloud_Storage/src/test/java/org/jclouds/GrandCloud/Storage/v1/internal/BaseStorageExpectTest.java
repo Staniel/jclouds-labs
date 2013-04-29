@@ -42,7 +42,7 @@ public class BaseStorageExpectTest<T> extends BaseRestApiExpectTest<T> {
    protected String identityWithTenantId;
 
    public BaseStorageExpectTest() {
-      provider = "openstack-reddwarf";
+      provider = "grandcloud-storage";
       keystoneAuthWithUsernameAndPassword = KeystoneFixture.INSTANCE.initialAuthWithUsernameAndPassword(identity,
             credential);
       keystoneAuthWithUsernameAndPasswordAndTenantName = KeystoneFixture.INSTANCE.initialAuthWithUsernameAndPasswordAndTenantName(identity,
@@ -61,13 +61,13 @@ public class BaseStorageExpectTest<T> extends BaseRestApiExpectTest<T> {
 
    @Override
    protected HttpRequestComparisonType compareHttpRequestAsType(HttpRequest input) {
-      return HttpRequestComparisonType.JSON;
+      return HttpRequestComparisonType.XML;
    }
    
    protected HttpRequest.Builder<?> authenticatedGET() {
       return HttpRequest.builder()
                         .method("GET")
-                        .addHeader("Accept", MediaType.APPLICATION_JSON)
+                        .addHeader("Accept", MediaType.APPLICATION_ATOM_XML)
                         .addHeader("X-Auth-Token", authToken);
    }
 }

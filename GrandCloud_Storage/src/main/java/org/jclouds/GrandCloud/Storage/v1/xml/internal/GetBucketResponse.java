@@ -29,7 +29,7 @@ import org.jclouds.grandcloud.storage.v1.domain.Bucket;
  * 
  * @author Dies Koper
  */
-@XmlRootElement(name = "GetVBucketResponse")
+@XmlRootElement(name = "ListBucketResult")
 public class GetBucketResponse implements SingleElementResponse{
    @XmlElement(required = true)
    private Bucket bucket;
