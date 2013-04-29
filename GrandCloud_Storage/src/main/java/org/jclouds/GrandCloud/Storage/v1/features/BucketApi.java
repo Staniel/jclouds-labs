@@ -42,52 +42,25 @@ import com.google.common.collect.FluentIterable;
  * @see org.jclouds.openstack.reddwarf.v1.domain.Flavor
  * Flavor
  * 
- * @see <a href="http://sourceforge.net/apps/trac/reddwarf/">api doc</a>
- * @see <a
- *      href="https://github.com/reddwarf-nextgen/reddwarf">api
- *      src</a>
  *      
- * @author Zack Shoylev
+ * @author changyuan chen
  */
-@SkipEncoding({'/', '='})
-@RequestFilters(AuthenticateRequest.class)
 public interface BucketApi {
    /**
-    * Returns a summary list of Flavors.
+    * Returns a summary list of Buckets.
     *
     * @return The list of Flavors
     */
-   @Named("flavor:list")
-   @GET
-   @Path("/flavors")
-   @SelectJson("flavors")
-   @Consumes(MediaType.APPLICATION_JSON)
-   @Fallback(EmptyFluentIterableOnNotFoundOr404.class)
+   
    FluentIterable<Bucket> list();
    
    /**
-    * Returns a Flavor by id
+    * Returns a Bucket by name
     *
     * @return Flavor
     */
-   @Named("flavors:get/{id}")
-   @GET
-   @Path("/flavors/{id}")
-   @SelectJson("flavor")
-   @Consumes(MediaType.APPLICATION_JSON)
-   @Fallback(NullOnNotFoundOr404.class)
-   Bucket get(@PathParam("id") int flavorId);
+  
+   Bucket get(String bucketName);
    
-   /**
-    * Returns a list of Flavors by Account ID (Tenant Id)
-    *
-    * @return The list of Flavors for Account/Tenant Id
-    */
-   @Named("flavors:get/{id}")
-   @GET
-   @Path("/flavors/{id}")
-   @SelectJson("flavors")
-   @Consumes(MediaType.APPLICATION_JSON)
-   @Fallback(EmptyFluentIterableOnNotFoundOr404.class)
-   FluentIterable<Bucket> list(@PathParam("id") String accountId);
+  
 }

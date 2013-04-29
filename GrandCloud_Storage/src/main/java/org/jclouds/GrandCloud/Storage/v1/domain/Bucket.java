@@ -32,7 +32,7 @@ import com.google.common.collect.ImmutableList;
 /**
  * An Openstack Reddwarf Flavor.
  * 
- * @author Zack Shoylev
+ * @author changyuan chen
  */
 public class Bucket implements Comparable<Bucket>{
 
@@ -43,9 +43,7 @@ public class Bucket implements Comparable<Bucket>{
 	@XmlElement(name = "IsTruncated")
     private final boolean istruncated;
 	
-	@XmlElementWrapper(name = "Contents")
-	@XmlElement(name = "software")
-	
+	@XmlElement(name = "Contents")
     private final List<StorageObject> contents;
 
     @ConstructorProperties({

@@ -36,10 +36,10 @@ import org.jclouds.xml.XMLParser;
  * @see org.jclouds.http.functions.ParseXMLWithJAXB
  */
 @Singleton
-public class FGCPJAXBParser implements XMLParser {
+public class StorageJAXBParser implements XMLParser {
    JAXBContext context;	
 
-   public FGCPJAXBParser() throws JAXBException {
+   public StorageJAXBParser() throws JAXBException {
       context = JAXBContext.newInstance(VServerWithDetails.class.getPackage()
             .getName()
             + ":"

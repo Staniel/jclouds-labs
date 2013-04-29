@@ -78,10 +78,14 @@ public class BucketApiExpectTest extends BaseStorageApiExpectTest {
 	                  payloadFromResource("/bucket_get.xml"))
 	            .build();
 	   
-	   System.out.println(response.toString());
+//	   System.out.println("aa");
 	   
-//	   BucketApi api = requestSendsResponse(request, response)
-//	            .getAdditionalDiskApi();
+	   BucketApi api = requestSendsResponse(request, response)
+	            .getStorageApi();
+	   
+	   Bucket bucket = api.get("coopis");
+	   
+	   System.out.println(bucket.getName());
 	   
 //      URI endpoint = URI.create("http://172.16.0.1:8776/v1/3456/flavors/1");
 //      BucketApi api = requestsSendResponses(
