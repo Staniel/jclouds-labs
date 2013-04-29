@@ -8,7 +8,7 @@ import java.util.Date;
 import com.google.common.base.Objects;
 import com.google.common.base.Objects.ToStringHelper;
 
-public class Content implements Comparable<Content>{
+public class StorageObject implements Comparable<StorageObject>{
 
 	private final String key;
 	private final Date lastModified;
@@ -18,7 +18,7 @@ public class Content implements Comparable<Content>{
     @ConstructorProperties({
         "key", "lastModified", "ETag", "size"
     })
-    protected Content(String key, Date lastModified, String ETag, long size) {
+    protected StorageObject(String key, Date lastModified, String ETag, long size) {
         this.key = checkNotNull(key, "key required");
         this.lastModified = lastModified;
         this.ETag = ETag;
@@ -62,7 +62,7 @@ public class Content implements Comparable<Content>{
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
-        Content that = Content.class.cast(obj);
+        StorageObject that = StorageObject.class.cast(obj);
         return Objects.equal(this.key, that.key);
     }
 
@@ -77,7 +77,7 @@ public class Content implements Comparable<Content>{
     }
 
     @Override
-    public int compareTo(Content that) {
+    public int compareTo(StorageObject that) {
         if (that == null)
             return 1;
         if (this == that)
@@ -134,11 +134,11 @@ public class Content implements Comparable<Content>{
             return this;
         }
 
-        public Content build() {
-            return new Content(key, lastModified, ETag, size);
+        public StorageObject build() {
+            return new StorageObject(key, lastModified, ETag, size);
         }
 
-        public Builder fromContent(Content in) {
+        public Builder fromContent(StorageObject in) {
             return this
                     .key(in.getKey())
                     .lastModified(in.getLastModified())

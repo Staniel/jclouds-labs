@@ -21,7 +21,10 @@ package org.jclouds.grandcloud.storage.v1.domain;
 import static com.google.common.base.Preconditions.checkNotNull;
 import java.beans.ConstructorProperties;
 import java.util.List;
-import org.jclouds.openstack.v2_0.domain.Link;
+
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+
 import com.google.common.base.Objects;
 import com.google.common.base.Objects.ToStringHelper;
 import com.google.common.collect.ImmutableList;
@@ -33,15 +36,22 @@ import com.google.common.collect.ImmutableList;
  */
 public class Bucket implements Comparable<Bucket>{
 
+	@XmlElement(name = "Name")
+	private final String name;
+	@XmlElement(name = "MaxKeys")
     private final int maxkey;
-    private final String name;
+	@XmlElement(name = "IsTruncated")
     private final boolean istruncated;
-    private final List<Content> contents;
+	
+	@XmlElementWrapper(name = "Contents")
+	@XmlElement(name = "software")
+	
+    private final List<StorageObject> contents;
 
     @ConstructorProperties({
         "name", "maxkey", "istruncated", "contents"
     })
-    protected Bucket(String name, int maxkey, boolean istruncated, List<Content> contents) {
+    protected Bucket(String name, int maxkey, boolean istruncated, List<StorageObject> contents) {
         this.name = checkNotNull(name, "name required");
         this.maxkey = maxkey;
         this.istruncated = istruncated;
@@ -72,7 +82,7 @@ public class Bucket implements Comparable<Bucket>{
     /**
      * @return the flavor links for this flavor. These are used during database instance creation.
      */
-    public List<Content> getContents() {
+    public List<StorageObject> getContents() {
         return this.contents;
     }
 
@@ -121,7 +131,7 @@ public class Bucket implements Comparable<Bucket>{
         protected String name;
         protected int maxkey;
         protected boolean istruncated;
-        protected List<Content> contents;
+        protected List<StorageObject> contents;
 
 
         /** 
@@ -151,7 +161,7 @@ public class Bucket implements Comparable<Bucket>{
         /** 
          * @see Flavor#getLinks()
          */
-        public Builder contents(List<Content> contents) {
+        public Builder contents(List<StorageObject> contents) {
             this.contents = ImmutableList.copyOf(contents);
             return this;
         }

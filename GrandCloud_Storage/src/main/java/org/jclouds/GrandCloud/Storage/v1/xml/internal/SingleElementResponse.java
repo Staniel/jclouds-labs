@@ -16,30 +16,14 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.jclouds.grandcloud.storage.v1.internal;
-
-import java.net.URI;
-
-import org.jclouds.grandcloud.storage.v1.StorageApi;
-import org.jclouds.http.HttpRequest;
+package org.jclouds.grandcloud.storage.v1.xml.internal;
 
 /**
- * Base class for writing Flavor Rest Api Expect tests
+ * Wrapper for CreateVSYSResponse.
  * 
- * @author Everett Toews
+ * @author Dies Koper
  */
-public class BaseStorageApiExpectTest extends BaseStorageExpectTest<StorageApi> {
-	
-	protected static HttpRequest buildGET() {
-	      URI uri = URI.create("http://storage-huabei-1.sdcloud.cn/coopis"
-	            + "?SNDAAccessKeyId=2CKMD2SOZT0CC1INGWA4A0XC8"
-	            + "&Expires=1367213663"
-	            + "&Signature=pDq2%2BPccU6H6lJOMCdxLyxhf5%2FA%3D");
-	      return HttpRequest
-	            .builder()
-	            .method("GET")
-	            .endpoint(uri)
-	            .build();
-	   }
-	
+public interface SingleElementResponse {
+
+   Object getElement();
 }

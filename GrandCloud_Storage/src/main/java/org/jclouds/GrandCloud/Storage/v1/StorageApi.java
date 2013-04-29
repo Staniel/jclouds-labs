@@ -50,7 +50,7 @@ public interface StorageApi extends Closeable{
     * Provides access to Flavor features.
     */
    @Delegate
-   BucketApi getFlavorApiForZone(
+   BucketApi getStorageApiForZone(
          @EndpointParam(parser = ZoneToEndpoint.class) @Nullable String zone);
    
    /**

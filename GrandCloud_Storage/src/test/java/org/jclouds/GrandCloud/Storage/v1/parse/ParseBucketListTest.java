@@ -18,21 +18,30 @@
  */
 package org.jclouds.grandcloud.storage.v1.parse;
 
+import static org.testng.Assert.assertEquals;
+
+import java.io.InputStream;
 import java.util.Set;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.core.MediaType;
 
 import org.jclouds.http.Uris;
-import org.jclouds.json.BaseSetParserTest;
+import org.jclouds.http.functions.BaseHandlerTest;
+import org.jclouds.http.functions.ParseXMLWithJAXB;
+import org.jclouds.date.DateService;
+import org.jclouds.date.internal.SimpleDateFormatDateService;
 import org.jclouds.grandcloud.storage.v1.domain.Bucket;
 import org.jclouds.openstack.v2_0.domain.Link;
 import org.jclouds.openstack.v2_0.domain.Link.Relation;
-import org.jclouds.rest.annotations.SelectJson;
+import org.jclouds.rest.annotations.XMLResponseParser;
+import org.jclouds.xml.XMLParser;
 import org.testng.annotations.Test;
 
+import com.google.common.collect.FluentIterable;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableSet;
+import com.google.inject.TypeLiteral;
 
 /**
  * 
@@ -40,24 +49,55 @@ import com.google.common.collect.ImmutableSet;
  */
 
 @Test(groups = "unit", testName = "ParseBucketTest")
-public class ParseBucketListTest extends BaseSetParserTest<Bucket> {
+public class ParseBucketListTest extends BaseHandlerTest {
+	
+	protected final DateService dateService = new SimpleDateFormatDateService();
 
-   @Override
-   public String resource() {
-      return "/bucket_list.xml";
-   }
+	public void test() {
+	      InputStream is = getClass().getResourceAsStream("/bucket_list.xml");
 
-   @Override
-   @Consumes(MediaType.APPLICATION_ATOM_XML)
-   @SelectXml("bucket")
-   @SelectJson("flavors")
+	      FluentIterable<Bucket> expected = expected();
+
+	      DescribeTagsResponseHandler handler = injector.getInstance(DescribeTagsResponseHandler.class);
+	      FluentIterable<Bucket> result = factory.create(handler).parse(is);
+
+	      assertEquals(result.toString(), expected.toString());
+
+	   }
+	
+//	public FluentIterable<Bucket> expected() {
+//	      return FluentIterable.from(ImmutableSet.<Bucket>builder()
+//	               .add(Bucket.builder()
+//	                       .resourceId("i-5f4e3d2a")
+//	                       .resourceType("instance")
+//	                       .key("webserver")
+//	                       .build())                
+//	               .add(Bucket.builder()
+//	                       .resourceId("i-5f4e3d2a")
+//	                       .resourceType("instance")
+//	                       .key("stack")
+//	                       .value("Production")
+//	                       .build())                
+//	               .add(Bucket.builder()
+//	                       .resourceId("i-12345678")
+//	                       .resourceType("instance")
+//	                       .key("database_server")
+//	                       .build())                
+//	               .add(Bucket.builder()
+//	                       .resourceId("i-12345678")
+//	                       .resourceType("instance")
+//	                       .key("stack")
+//	                       .value("Test")
+//	                       .build()).build());
+//	   }
+
    public Set<Bucket> expected() {
-      return ImmutableSet
+     return ImmutableSet
             .of(Bucket.builder()
-                  .id(1)
-                  .name("512MB Instance")
-                  .ram(512)
-                  .links(ImmutableList.of(
+                  .name("coopis")
+                  .maxkey(1000)
+                  .isTruncated(false)
+                  .contents(List.of(
                           Link.create(Relation.SELF, Uris.uriBuilder("https://localhost:8778/v1.0/811050/flavors/1").build() ),
                           Link.create(Relation.BOOKMARK, Uris.uriBuilder("https://localhost:8778/flavors/1").build() )
                           ))
@@ -87,7 +127,7 @@ public class ParseBucketListTest extends BaseSetParserTest<Bucket> {
                   .links(ImmutableList.of(
                           Link.create(Relation.SELF, Uris.uriBuilder("https://localhost:8778/v1.0/811050/flavors/4").build() ),
                           Link.create(Relation.BOOKMARK, Uris.uriBuilder("https://localhost:8778/flavors/4").build() )
-                          ))
+                         ))
                   .build(),
                   Bucket.builder()
                   .id(5)

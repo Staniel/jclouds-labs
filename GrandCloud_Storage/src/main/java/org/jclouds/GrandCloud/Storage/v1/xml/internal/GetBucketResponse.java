@@ -16,30 +16,31 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.jclouds.grandcloud.storage.v1.internal;
+package org.jclouds.grandcloud.storage.v1.xml.internal;
 
-import java.net.URI;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
-import org.jclouds.grandcloud.storage.v1.StorageApi;
-import org.jclouds.http.HttpRequest;
+import org.jclouds.grandcloud.storage.v1.domain.Bucket;
+
 
 /**
- * Base class for writing Flavor Rest Api Expect tests
+ * Wrapper for GetVDiskAttributesResponse.
  * 
- * @author Everett Toews
+ * @author Dies Koper
  */
-public class BaseStorageApiExpectTest extends BaseStorageExpectTest<StorageApi> {
-	
-	protected static HttpRequest buildGET() {
-	      URI uri = URI.create("http://storage-huabei-1.sdcloud.cn/coopis"
-	            + "?SNDAAccessKeyId=2CKMD2SOZT0CC1INGWA4A0XC8"
-	            + "&Expires=1367213663"
-	            + "&Signature=pDq2%2BPccU6H6lJOMCdxLyxhf5%2FA%3D");
-	      return HttpRequest
-	            .builder()
-	            .method("GET")
-	            .endpoint(uri)
-	            .build();
-	   }
-	
+@XmlRootElement(name = "GetVBucketResponse")
+public class GetBucketResponse implements SingleElementResponse{
+   @XmlElement(required = true)
+   private Bucket bucket;
+
+   @Override
+   public String toString() {
+      return getElement().toString();
+   }
+
+   @Override
+   public Object getElement() {
+      return bucket;
+   }
 }
