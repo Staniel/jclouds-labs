@@ -36,14 +36,14 @@ import com.google.common.collect.ImmutableList;
  */
 public class Bucket implements Comparable<Bucket>{
 
-	@XmlElement(name = "Name")
+	//@XmlElement(name = "Name")
 	private final String name;
-	@XmlElement(name = "MaxKeys")
+	//@XmlElement(name = "MaxKeys")
     private final int maxkey;
-	@XmlElement(name = "IsTruncated")
+	//@XmlElement(name = "IsTruncated")
     private final boolean istruncated;
 	
-	@XmlElement(name = "Contents")
+	//@XmlElement(name = "Contents")
     private final List<StorageObject> contents;
 
     @ConstructorProperties({

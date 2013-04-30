@@ -74,12 +74,9 @@ public class StorageApiMetadata extends BaseHttpApiMetadata<StorageApi> {
          .endpointName("Keystone base URL ending in /v2.0/")
          .documentation(URI.create("http://api.openstack.org/"))
          .version("1.0")
-         .defaultEndpoint("http://storage.grandcloud.cn")
+         .defaultEndpoint("http://storage-huabei-1.sdcloud.cn")
          .defaultProperties(StorageApiMetadata.defaultProperties())
          .defaultModules(ImmutableSet.<Class<? extends Module>>builder()
-                                     .add(AuthenticationApiModule.class)
-                                     .add(KeystoneAuthenticationModule.class)
-                                     .add(ZoneModule.class)
                                      .add(StorageParserModule.class)
                                      .add(StorageHttpApiModule.class)
                                      .build());
