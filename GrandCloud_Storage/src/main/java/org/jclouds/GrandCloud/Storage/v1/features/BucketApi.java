@@ -66,11 +66,9 @@ public interface BucketApi {
     *
     * @return Flavor
     */
-   @Named("flavors:get/{id}")
+   @Named("bucket:get/{id}")
    @GET
-   @Path("/flavors/{name}")
-   @SelectJson("flavor")
-   @Consumes(MediaType.APPLICATION_ATOM_XML)
+   @Path("/{name}")
    @Fallback(NullOnNotFoundOr404.class)
    Bucket get(@PathParam("name") String bucketName);
    

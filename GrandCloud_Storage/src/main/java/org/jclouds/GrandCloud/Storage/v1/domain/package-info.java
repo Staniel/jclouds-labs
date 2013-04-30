@@ -16,22 +16,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package org.jclouds.grandcloud.storage.v1.config;
+@XmlSchema(namespace = "http://storage-huabei-1.sdcloud.cn", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+@XmlAccessorType(XmlAccessType.FIELD)
+package org.jclouds.grandcloud.storage.v1.domain;
 
-import org.jclouds.grandcloud.storage.v1.xml.StorageJAXBParser;
-import org.jclouds.json.config.GsonModule;
-import org.jclouds.json.config.GsonModule.DateAdapter;
-import org.jclouds.xml.XMLParser;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlSchema;
 
-import com.google.inject.AbstractModule;
-
-/**
- * @author Everett Toews
- */
-public class StorageParserModule extends AbstractModule {
-   @Override
-   protected void configure() {
-      //bind(DateAdapter.class).to(GsonModule.Iso8601DateAdapter.class);
-	   bind(XMLParser.class).to(StorageJAXBParser.class);
-   }
-}

@@ -28,12 +28,12 @@ import org.jclouds.http.annotation.Redirection;
 import org.jclouds.http.annotation.ServerError;
 import org.jclouds.json.config.GsonModule.DateAdapter;
 import org.jclouds.json.config.GsonModule.Iso8601DateAdapter;
-import org.jclouds.openstack.keystone.v2_0.domain.Access;
-import org.jclouds.openstack.keystone.v2_0.domain.Tenant;
 import org.jclouds.grandcloud.storage.v1.StorageApi;
 import org.jclouds.grandcloud.storage.v1.handlers.StorageErrorHandler;
+import org.jclouds.grandcloud.storage.v1.xml.StorageJAXBParser;
 import org.jclouds.rest.ConfiguresHttpApi;
 import org.jclouds.rest.config.HttpApiModule;
+import org.jclouds.xml.XMLParser;
 
 import com.google.common.base.Function;
 import com.google.common.base.Optional;
@@ -53,7 +53,8 @@ public class StorageHttpApiModule extends HttpApiModule<StorageApi> {
    
    @Override
    protected void configure() {
-      bind(DateAdapter.class).to(Iso8601DateAdapter.class);
+      //bind(DateAdapter.class).to(Iso8601DateAdapter.class);
+	   bind(XMLParser.class).to(StorageJAXBParser.class);
       super.configure();
    }
    
@@ -70,15 +71,15 @@ public class StorageHttpApiModule extends HttpApiModule<StorageApi> {
       bind(HttpErrorHandler.class).annotatedWith(ServerError.class).to(StorageErrorHandler.class);
    }
    
-   @Provides
-   Supplier<Optional<Tenant>> supplyTenant(Supplier<Access> access) {
-      return Suppliers.compose(GetTenant.INSTANCE, access);
-   }
-   
-   private static enum GetTenant implements Function<Access, Optional<Tenant>> {
-      INSTANCE;
-      public Optional<Tenant> apply(Access in){
-         return in.getToken().getTenant();
-      }
-   }
+//   @Provides
+//   Supplier<Optional<Tenant>> supplyTenant(Supplier<Access> access) {
+//      return Suppliers.compose(GetTenant.INSTANCE, access);
+//   }
+//   
+//   private static enum GetTenant implements Function<Access, Optional<Tenant>> {
+//      INSTANCE;
+//      public Optional<Tenant> apply(Access in){
+//         return in.getToken().getTenant();
+//      }
+//   }
 }

@@ -26,6 +26,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import org.jclouds.grandcloud.storage.v1.domain.Bucket;
 import org.jclouds.http.HttpException;
 import org.jclouds.xml.XMLParser;
 
@@ -40,11 +41,7 @@ public class StorageJAXBParser implements XMLParser {
    JAXBContext context;	
 
    public StorageJAXBParser() throws JAXBException {
-      context = JAXBContext.newInstance(VServerWithDetails.class.getPackage()
-            .getName()
-            + ":"
-            + ListServerTypeResponse.class.getPackage().getName(),
-            VServerWithDetails.class.getClassLoader());
+      context = JAXBContext.newInstance(Bucket.class.getPackage().getName(), Bucket.class.getClassLoader());
    }
 
    @Override
@@ -74,10 +71,10 @@ public class StorageJAXBParser implements XMLParser {
          throw new IOException("Could not unmarshal document", ex);
       }
 
-      if (((StatusQuerable) response).isError()) {
-         throw new HttpException(
-               ((StatusQuerable) response).getResponseMessage());
-      }
+//      if (((StatusQuerable) response).isError()) {
+//         throw new HttpException(
+//               ((StatusQuerable) response).getResponseMessage());
+//      }
 
       return response;
    }

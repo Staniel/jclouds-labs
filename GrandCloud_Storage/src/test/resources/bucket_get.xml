@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ListBucketResult>
+<ListBucketResult xmlns="http://storage-huabei-1.sdcloud.cn">
     <Name>coopis</Name>
     <MaxKeys>1000</MaxKeys>
     <IsTruncated>false</IsTruncated>
