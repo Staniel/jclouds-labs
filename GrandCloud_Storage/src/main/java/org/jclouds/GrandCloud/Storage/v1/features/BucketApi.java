@@ -30,7 +30,9 @@ import org.jclouds.Fallbacks.EmptyFluentIterableOnNotFoundOr404;
 import org.jclouds.Fallbacks.NullOnNotFoundOr404;
 import org.jclouds.openstack.keystone.v2_0.filters.AuthenticateRequest;
 import org.jclouds.grandcloud.storage.v1.domain.Bucket;
+import org.jclouds.grandcloud.storage.v1.filters.SignRequest;
 import org.jclouds.rest.annotations.Fallback;
+import org.jclouds.rest.annotations.JAXBResponseParser;
 import org.jclouds.rest.annotations.RequestFilters;
 import org.jclouds.rest.annotations.SelectJson;
 import org.jclouds.rest.annotations.SkipEncoding;
@@ -70,6 +72,7 @@ public interface BucketApi {
    @GET
    @Path("/{name}")
    @Fallback(NullOnNotFoundOr404.class)
+   @JAXBResponseParser
    Bucket get(@PathParam("name") String bucketName);
    
   

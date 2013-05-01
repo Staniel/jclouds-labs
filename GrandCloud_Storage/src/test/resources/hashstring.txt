@@ -1,0 +1,7 @@
+GET
+application/octet-stream
+
+Thu, 05 Jun 2008 16:38:19 GMT
+/coopis
+x-snda-date:Thu, 05 Jun 2008 16:38:19 GMT
+x-snda-uid:2CKMD2SOZT0CC1INGWA4A0XC8

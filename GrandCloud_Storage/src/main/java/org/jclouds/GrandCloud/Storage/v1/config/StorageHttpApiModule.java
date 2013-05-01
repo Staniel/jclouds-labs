@@ -19,15 +19,20 @@
 package org.jclouds.grandcloud.storage.v1.config;
 
 import java.net.URI;
+import java.util.concurrent.TimeUnit;
 
+import javax.inject.Named;
 import javax.inject.Singleton;
 
+import org.jclouds.Constants;
 import org.jclouds.http.HttpErrorHandler;
 import org.jclouds.http.annotation.ClientError;
 import org.jclouds.http.annotation.Redirection;
 import org.jclouds.http.annotation.ServerError;
 import org.jclouds.json.config.GsonModule.DateAdapter;
 import org.jclouds.json.config.GsonModule.Iso8601DateAdapter;
+import org.jclouds.date.DateService;
+import org.jclouds.date.TimeStamp;
 import org.jclouds.grandcloud.storage.v1.StorageApi;
 import org.jclouds.grandcloud.storage.v1.handlers.StorageErrorHandler;
 import org.jclouds.grandcloud.storage.v1.xml.StorageJAXBParser;
@@ -56,6 +61,26 @@ public class StorageHttpApiModule extends HttpApiModule<StorageApi> {
       //bind(DateAdapter.class).to(Iso8601DateAdapter.class);
 	   bind(XMLParser.class).to(StorageJAXBParser.class);
       super.configure();
+   }
+   
+   @Provides
+   @TimeStamp
+   protected String provideTimeStamp(@TimeStamp Supplier<String> cache) {
+      return cache.get();
+   }
+   
+   /**
+    * borrowing concurrency code to ensure that caching takes place properly
+    */
+   @Provides
+   @TimeStamp
+   Supplier<String> provideTimeStampCache(@Named(Constants.PROPERTY_SESSION_INTERVAL) long seconds,
+            final DateService dateService) {
+      return Suppliers.memoizeWithExpiration(new Supplier<String>() {
+         public String get() {
+            return dateService.rfc822DateFormat();
+         }
+      }, seconds, TimeUnit.SECONDS);
    }
    
    @Provides

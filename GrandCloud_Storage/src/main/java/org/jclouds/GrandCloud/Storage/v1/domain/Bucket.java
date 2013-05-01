@@ -24,6 +24,7 @@ import java.util.List;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import com.google.common.base.Objects;
 import com.google.common.base.Objects.ToStringHelper;
@@ -34,17 +35,19 @@ import com.google.common.collect.ImmutableList;
  * 
  * @author changyuan chen
  */
+
+@XmlRootElement(name = "ListBucketResult")
 public class Bucket implements Comparable<Bucket>{
 
 	@XmlElement(name = "Name")
-	private final String name;
+	private String name;
 	@XmlElement(name = "MaxKeys")
-    private final int maxkey;
+    private int maxkey;
 	@XmlElement(name = "IsTruncated")
-    private final boolean istruncated;
+    private boolean istruncated;
 	
 	@XmlElement(name = "Contents")
-    private final List<StorageObject> contents;
+    private List<StorageObject> contents;
 
     @ConstructorProperties({
         "name", "maxkey", "istruncated", "contents"
@@ -55,6 +58,8 @@ public class Bucket implements Comparable<Bucket>{
         this.istruncated = istruncated;
         this.contents = contents;
     }
+    
+    protected Bucket(){}
 
     /**
      * @return the id of this flavor

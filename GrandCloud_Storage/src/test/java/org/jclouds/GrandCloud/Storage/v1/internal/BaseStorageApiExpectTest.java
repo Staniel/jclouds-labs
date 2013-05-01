@@ -31,10 +31,7 @@ import org.jclouds.http.HttpRequest;
 public class BaseStorageApiExpectTest extends BaseStorageExpectTest<StorageApi> {
 	
 	protected static HttpRequest buildGET() {
-	      URI uri = URI.create("http://storage-huabei-1.sdcloud.cn/coopis"
-	            + "?SNDAAccessKeyId=2CKMD2SOZT0CC1INGWA4A0XC8"
-	            + "&Expires=1367213663"
-	            + "&Signature=pDq2%2BPccU6H6lJOMCdxLyxhf5%2FA%3D");
+	      URI uri = URI.create("http://storage-huabei-1.sdcloud.cn/coopis");
 	      return HttpRequest
 	            .builder()
 	            .method("GET")

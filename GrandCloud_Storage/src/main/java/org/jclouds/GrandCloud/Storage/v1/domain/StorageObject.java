@@ -5,15 +5,24 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import java.beans.ConstructorProperties;
 import java.util.Date;
 
+import javax.xml.bind.annotation.XmlElement;
+
 import com.google.common.base.Objects;
 import com.google.common.base.Objects.ToStringHelper;
 
 public class StorageObject implements Comparable<StorageObject>{
 
-	private final String key;
-	private final Date lastModified;
-	private final String ETag;
-	private final long size;
+	@XmlElement(name = "Key")
+	private String key;
+	
+	@XmlElement(name = "LastModified")
+	private Date lastModified;
+	
+	@XmlElement(name = "ETag")
+	private String ETag;
+	
+	@XmlElement(name = "Size")
+	private long size;
 
     @ConstructorProperties({
         "key", "lastModified", "ETag", "size"
@@ -24,6 +33,8 @@ public class StorageObject implements Comparable<StorageObject>{
         this.ETag = ETag;
         this.size = size;
     }
+    
+    protected StorageObject(){}
 
     /**
      * @return the id of this flavor

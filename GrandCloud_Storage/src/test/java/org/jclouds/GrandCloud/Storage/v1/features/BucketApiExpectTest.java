@@ -78,28 +78,15 @@ public class BucketApiExpectTest extends BaseStorageApiExpectTest {
 	                  payloadFromResource("/bucket_get.xml"))
 	            .build();
 	   
-//	   System.out.println("aa");
-	   
 	   BucketApi api = requestSendsResponse(request, response)
 	            .getStorageApi();
 	   
 	   Bucket bucket = api.get("coopis");
 	   
-	   System.out.println(bucket.getName());
+	   assertEquals(bucket.getName(), "coopis");
+	   assertEquals(bucket.getMaxKey(), 1000);
+	   assertEquals(bucket.isTruncated(), false);
 	   
-//      URI endpoint = URI.create("http://172.16.0.1:8776/v1/3456/flavors/1");
-//      BucketApi api = requestsSendResponses(
-//            keystoneAuthWithUsernameAndPasswordAndTenantName,
-//            responseWithKeystoneAccess,
-//            authenticatedGET().endpoint(endpoint).build(),
-//            HttpResponse.builder().statusCode(200).payload(payloadFromResource("/bucket_get.xml")).build()
-//      ).getStorageApiForZone("RegionOne");
-//
-//      Bucket bucket = api.get(1);
-//      assertEquals(bucket.getName(), "512MB Instance");
-//      assertEquals(bucket.getMaxKey(), 1);
-//      assertEquals(bucket.isTruncated(), 512);
-//      assertEquals(bucket.getContents().size(), 2);
    }
    
 //   public void testGetBucketByAccountId() {
