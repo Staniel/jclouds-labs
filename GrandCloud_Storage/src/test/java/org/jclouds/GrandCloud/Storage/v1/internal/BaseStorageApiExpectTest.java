@@ -21,6 +21,7 @@ package org.jclouds.grandcloud.storage.v1.internal;
 import java.net.URI;
 
 import org.jclouds.grandcloud.storage.v1.StorageApi;
+import org.jclouds.grandcloud.storage.v1.reference.GrandCloudHeaders;
 import org.jclouds.http.HttpRequest;
 
 /**
@@ -35,6 +36,9 @@ public class BaseStorageApiExpectTest extends BaseStorageExpectTest<StorageApi> 
 	      return HttpRequest
 	            .builder()
 	            .method("GET")
+	            .addHeader(GrandCloudHeaders.UID, "2CKMD2SOZT0CC1INGWA4A0XC8")
+	            .addHeader("Date", "Wed, 01 May 2013 15:48:12 GMT")
+	            .addHeader(GrandCloudHeaders.SIGNATURE, "kmujcZ4Ssvb1ORVdafKPN3XKjgU=")
 	            .endpoint(uri)
 	            .build();
 	   }

@@ -30,6 +30,7 @@ import org.jclouds.http.HttpResponse;
 import org.jclouds.grandcloud.storage.v1.StorageApi;
 import org.jclouds.grandcloud.storage.v1.domain.Bucket;
 import org.jclouds.grandcloud.storage.v1.internal.BaseStorageApiExpectTest;
+import org.jclouds.grandcloud.storage.v1.reference.GrandCloudHeaders;
 import org.testng.annotations.Test;
 
 /**
@@ -75,7 +76,7 @@ public class BucketApiExpectTest extends BaseStorageApiExpectTest {
 	            .builder()
 	            .statusCode(200)
 	            .payload(
-	                  payloadFromResource("/bucket_get.xml"))
+	                  payloadFromResource("/bucket_get.xml"))	            
 	            .build();
 	   
 	   BucketApi api = requestSendsResponse(request, response)

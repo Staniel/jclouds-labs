@@ -29,9 +29,9 @@
 
   <!-- TODO: when out of labs, switch to org.jclouds.api -->
   <groupId>org.jclouds.labs</groupId>
-  <artifactId>openstack-reddwarf</artifactId>
-  <name>jclouds openstack-reddwarf api</name>
-  <description>jclouds components to access an implementation of OpenStack RedDwarf</description>
+  <artifactId>grandcloud-storage</artifactId>
+  <name>jclouds grandcloud-storage api</name>
+  <description>jclouds components to access an implementation of GrandCloud Storage</description>
   <packaging>bundle</packaging>
 
   <properties>
@@ -108,11 +108,11 @@
                 </goals>
                 <configuration>
                   <systemPropertyVariables>
-                    <test.openstack-reddwarf.endpoint>${test.openstack-reddwarf.endpoint}</test.openstack-reddwarf.endpoint>
-                    <test.openstack-reddwarf.api-version>${test.openstack-reddwarf.api-version}</test.openstack-reddwarf.api-version>
-                    <test.openstack-reddwarf.build-version>${test.openstack-reddwarf.build-version}</test.openstack-reddwarf.build-version>
-                    <test.openstack-reddwarf.identity>${test.openstack-reddwarf.identity}</test.openstack-reddwarf.identity>
-                    <test.openstack-reddwarf.credential>${test.openstack-reddwarf.credential}</test.openstack-reddwarf.credential>
+                    <test.grandcloud-storage.endpoint>${test.grandcloud-storage.endpoint}</test.grandcloud-storage.endpoint>
+                    <test.grandcloud-storage.api-version>${test.grandcloud-storage.api-version}</test.grandcloud-storage.api-version>
+                    <test.grandcloud-storage.build-version>${test.grandcloud-storage.build-version}</test.grandcloud-storage.build-version>
+                    <test.grandcloud-storage.identity>${test.grandcloud-storage.identity}</test.grandcloud-storage.identity>
+                    <test.grandcloud-storage.credential>${test.grandcloud-storage.credential}</test.grandcloud-storage.credential>
                     <test.jclouds.keystone.credential-type>${test.jclouds.keystone.credential-type}</test.jclouds.keystone.credential-type>
                   </systemPropertyVariables>
                 </configuration>

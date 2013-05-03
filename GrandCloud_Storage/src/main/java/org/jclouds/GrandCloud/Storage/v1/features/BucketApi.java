@@ -73,6 +73,7 @@ public interface BucketApi {
    @Path("/{name}")
    @Fallback(NullOnNotFoundOr404.class)
    @JAXBResponseParser
+   @RequestFilters(SignRequest.class)
    Bucket get(@PathParam("name") String bucketName);
    
   

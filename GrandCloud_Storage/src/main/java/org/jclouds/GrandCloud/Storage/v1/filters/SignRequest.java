@@ -104,7 +104,11 @@ public class SignRequest implements HttpRequestFilter {
       if (request.getHeaders().containsKey(GrandCloudHeaders.DATE))
          builder.put(GrandCloudHeaders.DATE, date);
       request = request.toBuilder().replaceHeaders(Multimaps.forMap(builder.build())).build();
+      
       String signature = calculateSignature(createStringToSign(request));
+      builder.put(HttpHeaders.AUTHORIZATION, "SNDA " + creds.get().identity + ":" + signature);
+      request = request.toBuilder().replaceHeaders(Multimaps.forMap(builder.build())).build();
+      
       request = request.toBuilder().replaceHeader(GrandCloudHeaders.SIGNATURE, signature).build();
       utils.logRequest(signatureLog, request, "<<");
       return request;
