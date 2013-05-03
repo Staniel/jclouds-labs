@@ -63,10 +63,9 @@ import com.google.common.collect.Sets;
 import com.google.common.io.ByteProcessor;
 
 /**
- * Signs the EMC Atmos Online Storage request.
+ * Signs the GrandCloud Online Storage request.
  * 
- * @see <a href="https://community.emc.com/community/labs/atmos_online" />
- * @author Adrian Cole
+ * @author changych
  * 
  */
 @Singleton

@@ -40,8 +40,8 @@
     <!-- keystone version -->
     <test.grandcloud-storage.api-version>1.0</test.grandcloud-storage.api-version>
     <test.grandcloud-storage.build-version />
-    <test.grandcloud-storage.identity>FIXME_IDENTITY</test.grandcloud-storage.identity>
-    <test.grandcloud-storage.credential>FIXME_CREDENTIALS</test.grandcloud-storage.credential>
+    <test.grandcloud-storage.identity>haha</test.grandcloud-storage.identity>
+    <test.grandcloud-storage.credential>hehe</test.grandcloud-storage.credential>
     <test.jclouds.keystone.credential-type>passwordCredentials</test.jclouds.keystone.credential-type>
 
     <jclouds.osgi.export>org.jclouds.openstack.reddwarf.v1_0*;version="${project.version}"</jclouds.osgi.export>

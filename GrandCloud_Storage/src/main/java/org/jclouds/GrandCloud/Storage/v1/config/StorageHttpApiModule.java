@@ -67,6 +67,7 @@ public class StorageHttpApiModule extends HttpApiModule<StorageApi> {
    @TimeStamp
    protected String provideTimeStamp(@TimeStamp Supplier<String> cache) {
       return cache.get();
+//	   return "Wed, 01 May 2013 15:48:12 GMT";
    }
    
    /**

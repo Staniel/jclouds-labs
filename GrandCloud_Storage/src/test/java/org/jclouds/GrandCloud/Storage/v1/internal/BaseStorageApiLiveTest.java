@@ -32,7 +32,7 @@ import org.jclouds.grandcloud.storage.v1.StorageApi;
 public class BaseStorageApiLiveTest extends BaseApiLiveTest<StorageApi> {
 
    public BaseStorageApiLiveTest() {
-      provider = "openstack-reddwarf";
+      provider = "grandcloud-storage";
    }
 
    @Override

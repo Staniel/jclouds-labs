@@ -32,8 +32,10 @@ import com.google.common.collect.FluentIterable;
 /**
  * @author Zack Shoylev
  */
-@Test(groups = "live", testName = "FlavorApiLiveTest")
+@Test(groups = "live", testName = "BucketApiLiveTest")
 public class BucketApiLiveTest extends BaseStorageApiLiveTest {
+	
+	
 
     @Override
     @BeforeClass(groups = { "integration", "live" })

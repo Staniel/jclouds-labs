@@ -19,10 +19,13 @@
 package org.jclouds.grandcloud.storage.v1.internal;
 
 import java.net.URI;
+import java.util.Date;
 
 import org.jclouds.grandcloud.storage.v1.StorageApi;
 import org.jclouds.grandcloud.storage.v1.reference.GrandCloudHeaders;
 import org.jclouds.http.HttpRequest;
+
+import com.google.common.net.HttpHeaders;
 
 /**
  * Base class for writing Flavor Rest Api Expect tests
@@ -37,8 +40,9 @@ public class BaseStorageApiExpectTest extends BaseStorageExpectTest<StorageApi> 
 	            .builder()
 	            .method("GET")
 	            .addHeader(GrandCloudHeaders.UID, "2CKMD2SOZT0CC1INGWA4A0XC8")
-	            .addHeader("Date", "Wed, 01 May 2013 15:48:12 GMT")
-	            .addHeader(GrandCloudHeaders.SIGNATURE, "kmujcZ4Ssvb1ORVdafKPN3XKjgU=")
+	            .addHeader(HttpHeaders.DATE, "Wed, 01 May 2013 15:48:12 GMT")
+	            .addHeader(HttpHeaders.AUTHORIZATION, "SNDA 2CKMD2SOZT0CC1INGWA4A0XC8:Mc95Xip+2tmI57cRNaKgeoem3GU=")
+	            .addHeader(GrandCloudHeaders.SIGNATURE, "Mc95Xip+2tmI57cRNaKgeoem3GU=")
 	            .endpoint(uri)
 	            .build();
 	   }
