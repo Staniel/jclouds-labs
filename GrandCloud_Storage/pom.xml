@@ -36,12 +36,12 @@
 
   <properties>
     <!-- keystone endpoint -->
-    <test.openstack-reddwarf.endpoint>http://localhost:5000/v2.0/</test.openstack-reddwarf.endpoint>
+    <test.grandcloud-storage.endpoint>http://localhost:5000/v2.0/</test.grandcloud-storage.endpoint>
     <!-- keystone version -->
-    <test.openstack-reddwarf.api-version>1.0</test.openstack-reddwarf.api-version>
-    <test.openstack-reddwarf.build-version />
-    <test.openstack-reddwarf.identity>FIXME_IDENTITY</test.openstack-reddwarf.identity>
-    <test.openstack-reddwarf.credential>FIXME_CREDENTIALS</test.openstack-reddwarf.credential>
+    <test.grandcloud-storage.api-version>1.0</test.grandcloud-storage.api-version>
+    <test.grandcloud-storage.build-version />
+    <test.grandcloud-storage.identity>FIXME_IDENTITY</test.grandcloud-storage.identity>
+    <test.grandcloud-storage.credential>FIXME_CREDENTIALS</test.grandcloud-storage.credential>
     <test.jclouds.keystone.credential-type>passwordCredentials</test.jclouds.keystone.credential-type>
 
     <jclouds.osgi.export>org.jclouds.openstack.reddwarf.v1_0*;version="${project.version}"</jclouds.osgi.export>
