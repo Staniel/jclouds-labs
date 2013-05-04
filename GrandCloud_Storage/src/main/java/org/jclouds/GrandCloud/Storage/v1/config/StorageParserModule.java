@@ -26,7 +26,7 @@ import org.jclouds.xml.XMLParser;
 import com.google.inject.AbstractModule;
 
 /**
- * @author Everett Toews
+ * @author Changyuan Chen
  */
 public class StorageParserModule extends AbstractModule {
    @Override

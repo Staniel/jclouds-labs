@@ -45,7 +45,7 @@ import com.google.inject.TypeLiteral;
 
 /**
  * 
- * @author Zack Shoylev
+ * @author Changyuan Chen
  */
 
 //@Test(groups = "unit", testName = "ParseBucketTest")

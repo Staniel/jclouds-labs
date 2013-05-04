@@ -16,7 +16,7 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-@XmlSchema(namespace = "http://storage-huabei-1.sdcloud.cn", elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
+@XmlSchema( elementFormDefault = javax.xml.bind.annotation.XmlNsForm.QUALIFIED)
 @XmlAccessorType(XmlAccessType.FIELD)
 package org.jclouds.grandcloud.storage.v1.domain;
 

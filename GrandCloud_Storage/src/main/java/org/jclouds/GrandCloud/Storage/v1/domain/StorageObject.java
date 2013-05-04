@@ -10,6 +10,12 @@ import javax.xml.bind.annotation.XmlElement;
 import com.google.common.base.Objects;
 import com.google.common.base.Objects.ToStringHelper;
 
+
+/**
+ * An Openstack Reddwarf Flavor.
+ * 
+ * @author Changyuan Chen
+ */
 public class StorageObject implements Comparable<StorageObject>{
 
 	@XmlElement(name = "Key")

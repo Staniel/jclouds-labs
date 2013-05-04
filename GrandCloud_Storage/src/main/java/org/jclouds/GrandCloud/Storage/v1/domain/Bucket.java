@@ -33,7 +33,7 @@ import com.google.common.collect.ImmutableList;
 /**
  * An Openstack Reddwarf Flavor.
  * 
- * @author changyuan chen
+ * @author Changyuan Chen
  */
 
 @XmlRootElement(name = "ListBucketResult")

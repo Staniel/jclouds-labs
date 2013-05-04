@@ -33,7 +33,7 @@ import org.jclouds.xml.XMLParser;
 /**
  * Parses XML documents using JAXB.
  * 
- * @author Dies Koper
+ * @author Changyuan Chen
  * @see org.jclouds.http.functions.ParseXMLWithJAXB
  */
 @Singleton

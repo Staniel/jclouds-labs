@@ -97,18 +97,17 @@ public class SignRequest implements HttpRequestFilter {
    @Override
    public HttpRequest filter(HttpRequest request) throws HttpException {
       Builder<String, String> builder = ImmutableMap.builder();
-      builder.put(GrandCloudHeaders.UID, creds.get().identity);
       String date = timeStampProvider.get();
       builder.put(HttpHeaders.DATE, date);
       if (request.getHeaders().containsKey(GrandCloudHeaders.DATE))
          builder.put(GrandCloudHeaders.DATE, date);
       request = request.toBuilder().replaceHeaders(Multimaps.forMap(builder.build())).build();
       
-      String signature = calculateSignature(createStringToSign(request));
+      String stringToSign = createStringToSign(request);
+      
+      String signature = calculateSignature(stringToSign);
       builder.put(HttpHeaders.AUTHORIZATION, "SNDA " + creds.get().identity + ":" + signature);
       request = request.toBuilder().replaceHeaders(Multimaps.forMap(builder.build())).build();
-      
-      request = request.toBuilder().replaceHeader(GrandCloudHeaders.SIGNATURE, signature).build();
       utils.logRequest(signatureLog, request, "<<");
       return request;
    }

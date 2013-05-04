@@ -21,7 +21,7 @@ package org.jclouds.grandcloud.storage.v1.xml.internal;
 /**
  * Wrapper for CreateVSYSResponse.
  * 
- * @author Dies Koper
+ * @author Changyuan Chen
  */
 public interface SingleElementResponse {
 

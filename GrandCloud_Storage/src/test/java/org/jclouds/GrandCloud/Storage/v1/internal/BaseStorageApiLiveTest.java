@@ -27,7 +27,7 @@ import org.jclouds.grandcloud.storage.v1.StorageApi;
 /**
  * Tests behavior of RedDwarfApi
  * 
- * @author Zack Shoylev
+ * @author Changyuan Chen
  */
 public class BaseStorageApiLiveTest extends BaseApiLiveTest<StorageApi> {
 

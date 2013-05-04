@@ -27,7 +27,7 @@ import org.jclouds.grandcloud.storage.v1.domain.Bucket;
 /**
  * Wrapper for GetVDiskAttributesResponse.
  * 
- * @author Dies Koper
+ * @author Changyuan Chen
  */
 @XmlRootElement(name = "ListBucketResult")
 public class GetBucketResponse implements SingleElementResponse{

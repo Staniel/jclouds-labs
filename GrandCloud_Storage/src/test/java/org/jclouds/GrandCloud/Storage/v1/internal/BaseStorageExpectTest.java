@@ -30,33 +30,9 @@ import org.jclouds.rest.internal.BaseRestApiExpectTest;
  * @author Adrian Cole
  */
 public class BaseStorageExpectTest<T> extends BaseRestApiExpectTest<T> {
-//   protected HttpRequest keystoneAuthWithUsernameAndPassword;
-//   protected HttpRequest keystoneAuthWithUsernameAndPasswordAndTenantName;
-//   protected HttpRequest keystoneAuthWithAccessKeyAndSecretKeyAndTenantName;
-//   protected String authToken;
-//   protected HttpResponse responseWithKeystoneAccess;
-//   protected HttpRequest extensionsOfNovaRequest;
-//   protected HttpResponse extensionsOfNovaResponse;
-//   protected HttpResponse unmatchedExtensionsOfNovaResponse;
-//   protected HttpRequest keystoneAuthWithAccessKeyAndSecretKeyAndTenantId;
-//   protected String identityWithTenantId;
 
    public BaseStorageExpectTest() {
       provider = "grandcloud-storage";
-//      keystoneAuthWithUsernameAndPassword = KeystoneFixture.INSTANCE.initialAuthWithUsernameAndPassword(identity,
-//            credential);
-//      keystoneAuthWithUsernameAndPasswordAndTenantName = KeystoneFixture.INSTANCE.initialAuthWithUsernameAndPasswordAndTenantName(identity,
-//            credential);
-//      keystoneAuthWithAccessKeyAndSecretKeyAndTenantName = KeystoneFixture.INSTANCE.initialAuthWithAccessKeyAndSecretKeyAndTenantName(identity,
-//            credential);
-//      keystoneAuthWithAccessKeyAndSecretKeyAndTenantId = KeystoneFixture.INSTANCE.initialAuthWithAccessKeyAndSecretKeyAndTenantId(identity,
-//              credential);
-      
-//      authToken = KeystoneFixture.INSTANCE.getAuthToken();
-//      responseWithKeystoneAccess = KeystoneFixture.INSTANCE.responseWithAccess();
-      // now, createContext arg will need tenant prefix
-//      identityWithTenantId = KeystoneFixture.INSTANCE.getTenantId() + ":" + identity;
-//      identity = KeystoneFixture.INSTANCE.getTenantName() + ":" + identity;
       identity = "2CKMD2SOZT0CC1INGWA4A0XC8";
    }
 
@@ -69,6 +45,5 @@ public class BaseStorageExpectTest<T> extends BaseRestApiExpectTest<T> {
       return HttpRequest.builder()
                         .method("GET")
                         .addHeader("Accept", MediaType.APPLICATION_ATOM_XML);
-//                        .addHeader("X-Auth-Token", authToken);
    }
 }

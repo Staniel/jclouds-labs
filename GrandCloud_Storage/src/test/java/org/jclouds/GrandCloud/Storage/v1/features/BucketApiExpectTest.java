@@ -36,7 +36,7 @@ import org.testng.annotations.Test;
 /**
  * Tests FlavorApi Guice wiring and parsing
  *
- * @author Zack Shoylev
+ * @author Changyuan Chen
  */
 @Test(groups = "unit", testName = "BucketApiExpectTest")
 public class BucketApiExpectTest extends BaseStorageApiExpectTest {

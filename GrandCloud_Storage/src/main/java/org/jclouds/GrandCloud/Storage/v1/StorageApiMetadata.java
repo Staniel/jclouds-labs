@@ -18,20 +18,14 @@
  */
 package org.jclouds.grandcloud.storage.v1;
 
-import static org.jclouds.openstack.keystone.v2_0.config.KeystoneProperties.CREDENTIAL_TYPE;
-import static org.jclouds.openstack.keystone.v2_0.config.KeystoneProperties.SERVICE_TYPE;
 
 import java.net.URI;
 import java.util.Properties;
 
 import org.jclouds.apis.ApiMetadata;
-import org.jclouds.openstack.keystone.v2_0.config.AuthenticationApiModule;
-import org.jclouds.openstack.keystone.v2_0.config.CredentialTypes;
-import org.jclouds.openstack.keystone.v2_0.config.KeystoneAuthenticationModule;
-import org.jclouds.openstack.keystone.v2_0.config.KeystoneAuthenticationModule.ZoneModule;
-import org.jclouds.grandcloud.storage.v1.config.StorageHttpApiModule;
 import org.jclouds.grandcloud.storage.v1.config.StorageParserModule;
-import org.jclouds.openstack.v2_0.ServiceType;
+import org.jclouds.grandcloud.storage.v1.config.StorageHttpApiModule;
+import org.jclouds.grandcloud.storage.v1.StorageApi;
 import org.jclouds.rest.internal.BaseHttpApiMetadata;
 
 import com.google.common.collect.ImmutableSet;
@@ -40,7 +34,7 @@ import com.google.inject.Module;
 /**
  * Implementation of {@link ApiMetadata} for RedDwarf API
  * 
- * @author Zack Shoylev
+ * @author Changyuan Chen
  */
 public class StorageApiMetadata extends BaseHttpApiMetadata<StorageApi> {
       
@@ -59,8 +53,6 @@ public class StorageApiMetadata extends BaseHttpApiMetadata<StorageApi> {
 
    public static Properties defaultProperties() {
       Properties properties = BaseHttpApiMetadata.defaultProperties();
-      properties.setProperty(SERVICE_TYPE, ServiceType.DATABASE_SERVICE);      
-      properties.setProperty(CREDENTIAL_TYPE, CredentialTypes.PASSWORD_CREDENTIALS);
       return properties;
    }
 

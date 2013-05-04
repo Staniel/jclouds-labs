@@ -54,44 +54,42 @@ import com.google.inject.Module;
 @Test(groups = "unit")
 public class SignRequestTest {
 
-   private static final String EXPECTED_SIGNATURE = "lMYsz9cYOviDB1ArSqK2cuKZCto=";
+   private static final String EXPECTED_SIGNATURE = "cSkSOzr6GJhykbWRo7CPfhihEmo=";
    private static final String UID = "2CKMD2SOZT0CC1INGWA4A0XC8";
    private static final String DEFAULT_DATE = "Thu, 05 Jun 2008 16:38:19 GMT";
    private static final String KEY = "NGEzN2Y4NGQtNGM1YS00YWE3LThlODEtNGY3OGQ5YmMzYTQ2";
-   private static final String DEFAULT_AUTHENTICATION = "SNDA " + UID + ":";
+   private static final String DEFAULT_AUTHENTICATION = "SNDA " + UID + ":" + EXPECTED_SIGNATURE;
 
    private SignRequest filter;
 
 //   @Test
 //   void testCreateStringToSign() throws IOException {
-//      String expects = Strings2.toStringAndClose(getClass().getResourceAsStream("/hashstring.txt"));
+//      String expects = Strings2.toStringAndClose(getClass().getResourceAsStream("/stringToSign"));
 //      HttpRequest request = newRequest(preconstructedHeaders().build());
 //      String toSign = filter.createStringToSign(request);
 //      assertEquals(toSign, expects);
 //   }
 
-//   @Test
-//   void testSignString() throws IOException, NoSuchAlgorithmException, InvalidKeyException {
-//      HttpRequest request = newRequest(preconstructedHeaders().build());
-//      String toSign = filter.createStringToSign(request);
-//      String signature = filter.calculate(toSign);
-//      assertEquals(signature, EXPECTED_SIGNATURE);
-//   }
-//
+   @Test
+   void testSignString() throws IOException, NoSuchAlgorithmException, InvalidKeyException {
+      HttpRequest request = newRequest(preconstructedHeaders().build());
+      String toSign = filter.createStringToSign(request);
+      String signature = filter.calculate(toSign);
+      assertEquals(signature, EXPECTED_SIGNATURE);
+   }
+
    @Test
    void testFilter() throws IOException, NoSuchAlgorithmException, InvalidKeyException {
       HttpRequest request = newRequest(inputHeaders().build());
       request = filter.filter(request);
-      assertEquals(request.getFirstHeaderOrNull(GrandCloudHeaders.SIGNATURE), EXPECTED_SIGNATURE);
+      assertEquals(request.getFirstHeaderOrNull(HttpHeaders.AUTHORIZATION), DEFAULT_AUTHENTICATION);
    }
 
    @Test
    void testFilterReplacesOldValues() throws IOException, NoSuchAlgorithmException, InvalidKeyException {
-      HttpRequest request = newRequest(inputHeaders().put(GrandCloudHeaders.SIGNATURE, "foo")
-            .put(HttpHeaders.DATE, "foo").put(GrandCloudHeaders.DATE, "foo").put(GrandCloudHeaders.UID, "foo")
-            .build());
+      HttpRequest request = newRequest(inputHeaders().put(HttpHeaders.DATE, "foo").build());
       request = filter.filter(request);
-      assertEquals(request.getFirstHeaderOrNull(GrandCloudHeaders.SIGNATURE), EXPECTED_SIGNATURE);
+      assertEquals(request.getFirstHeaderOrNull(HttpHeaders.AUTHORIZATION), DEFAULT_AUTHENTICATION);
    }
 
    @BeforeClass
@@ -136,7 +134,7 @@ public class SignRequestTest {
       Builder<String, String> builder = inputHeaders();
       builder.put(HttpHeaders.DATE, DEFAULT_DATE);
       builder.put(HttpHeaders.AUTHORIZATION, DEFAULT_AUTHENTICATION);
-      builder.put(GrandCloudHeaders.UID, UID);
+//      builder.put(GrandCloudHeaders.UID, UID);
       return builder;
    }
 
@@ -147,7 +145,7 @@ public class SignRequestTest {
       builder.put(HttpHeaders.ACCEPT, "*/*");
 //      builder.put(GrandCloudHeaders.USER_ACL, "john=FULL_CONTROL,mary=WRITE");
 //      builder.put(GrandCloudHeaders.GROUP_ACL, "other=NONE");
-      builder.put(GrandCloudHeaders.DATE, DEFAULT_DATE);
+//      builder.put(GrandCloudHeaders.DATE, DEFAULT_DATE);
 //      builder.put(HttpHeaders.HOST, "10.5.115.118");
       return builder;
    }

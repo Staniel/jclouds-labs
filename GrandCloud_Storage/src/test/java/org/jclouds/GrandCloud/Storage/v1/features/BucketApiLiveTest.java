@@ -30,7 +30,7 @@ import org.testng.annotations.Test;
 import com.google.common.collect.FluentIterable;
 
 /**
- * @author Zack Shoylev
+ * @author Changyuan Chen
  */
 @Test(groups = "live", testName = "BucketApiLiveTest")
 public class BucketApiLiveTest extends BaseStorageApiLiveTest {
@@ -44,7 +44,6 @@ public class BucketApiLiveTest extends BaseStorageApiLiveTest {
     }
 
     private void checkBucket(Bucket bucket) {
-//        assertNotNull(bucket.getId(), "Id cannot be null for " + bucket);
         assertNotNull(bucket.getName(), "Name cannot be null for " + bucket);
     }
 
@@ -70,17 +69,12 @@ public class BucketApiLiveTest extends BaseStorageApiLiveTest {
 
     @Test
     public void testGetBucket() {
-//        for (String zone : api.getConfiguredZones()) {
-//       	BucketApi flavorApi = api.getFlavorApiForZone(zone);      
-        	BucketApi bucketApi = api.getStorageApi();
-            for (Bucket bucket : bucketApi.list()) {
-            	Bucket bucketFromGet = bucketApi.get(bucket.getName());
-                assertEquals(bucketFromGet.getName(), bucket.getName());
-//                assertEquals(flavorFromGet.getRam(), bucket.getRam());
-//                assertEquals(flavorFromGet.getName(), bucket.getName());
-//                assertEquals(flavorFromGet.getLinks(), flavor.getLinks());
-            }
-//        }
+    	BucketApi bucketApi = api.getStorageApi();
+        Bucket bucket = bucketApi.get("coopis");
+        
+        assertEquals(bucket.getName(), "coopis");
+     	assertEquals(bucket.getMaxKey(), 1000);
+     	assertEquals(bucket.isTruncated(), false);
     }
 
 //    @Test

@@ -51,7 +51,7 @@ import com.google.inject.Provides;
 /**
  * Configures the RedDwarf connection.
  * 
- * @author Zack Shoylev
+ * @author Changyuan Chen
  */
 @ConfiguresHttpApi
 public class StorageHttpApiModule extends HttpApiModule<StorageApi> {

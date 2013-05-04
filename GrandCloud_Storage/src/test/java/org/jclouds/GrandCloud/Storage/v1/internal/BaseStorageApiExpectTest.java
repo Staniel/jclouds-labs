@@ -30,7 +30,7 @@ import com.google.common.net.HttpHeaders;
 /**
  * Base class for writing Flavor Rest Api Expect tests
  * 
- * @author Everett Toews
+ * @author Changyuan Chen
  */
 public class BaseStorageApiExpectTest extends BaseStorageExpectTest<StorageApi> {
 	
@@ -39,10 +39,8 @@ public class BaseStorageApiExpectTest extends BaseStorageExpectTest<StorageApi> 
 	      return HttpRequest
 	            .builder()
 	            .method("GET")
-	            .addHeader(GrandCloudHeaders.UID, "2CKMD2SOZT0CC1INGWA4A0XC8")
 	            .addHeader(HttpHeaders.DATE, "Wed, 01 May 2013 15:48:12 GMT")
-	            .addHeader(HttpHeaders.AUTHORIZATION, "SNDA 2CKMD2SOZT0CC1INGWA4A0XC8:Mc95Xip+2tmI57cRNaKgeoem3GU=")
-	            .addHeader(GrandCloudHeaders.SIGNATURE, "Mc95Xip+2tmI57cRNaKgeoem3GU=")
+	            .addHeader(HttpHeaders.AUTHORIZATION, "SNDA 2CKMD2SOZT0CC1INGWA4A0XC8:ggenoQzPeLbIBaUbNfEZ3lE0t6g=")
 	            .endpoint(uri)
 	            .build();
 	   }

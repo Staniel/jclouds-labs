@@ -21,22 +21,15 @@ package org.jclouds.grandcloud.storage.v1;
 import java.io.Closeable;
 import java.util.Set;
 
-import org.jclouds.javax.annotation.Nullable;
 import org.jclouds.location.Zone;
-import org.jclouds.location.functions.ZoneToEndpoint;
-import org.jclouds.openstack.keystone.v2_0.domain.Tenant;
 import org.jclouds.grandcloud.storage.v1.features.BucketApi;
 import org.jclouds.rest.annotations.Delegate;
-import org.jclouds.rest.annotations.EndpointParam;
-
-import com.google.common.base.Optional;
 import com.google.inject.Provides;
 
 /**
  * Provides access to RedDwarf.
- *  
- * @see <a href="http://api.openstack.org/">API Doc</a>
- * @author Zack Shoylev
+ * 
+ * @author Changyuan Chen
  */
 public interface StorageApi extends Closeable{
    /**
@@ -47,14 +40,9 @@ public interface StorageApi extends Closeable{
    Set<String> getConfiguredZones();
    
    /**
-    * Provides access to Flavor features.
+    * Provides access to Bucket features.
     */
    @Delegate
    BucketApi getStorageApi();
    
-   /**
-    * Provides the Tenant
-    */
-   @Provides 
-   Optional<Tenant> getCurrentTenantId();
 }

@@ -20,22 +20,16 @@
 package org.jclouds.grandcloud.storage.v1.features;
 
 import javax.inject.Named;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
-import javax.ws.rs.core.MediaType;
 
-import org.jclouds.Fallbacks.EmptyFluentIterableOnNotFoundOr404;
 import org.jclouds.Fallbacks.NullOnNotFoundOr404;
-import org.jclouds.openstack.keystone.v2_0.filters.AuthenticateRequest;
 import org.jclouds.grandcloud.storage.v1.domain.Bucket;
 import org.jclouds.grandcloud.storage.v1.filters.SignRequest;
 import org.jclouds.rest.annotations.Fallback;
 import org.jclouds.rest.annotations.JAXBResponseParser;
 import org.jclouds.rest.annotations.RequestFilters;
-import org.jclouds.rest.annotations.SelectJson;
-import org.jclouds.rest.annotations.SkipEncoding;
 
 import com.google.common.collect.FluentIterable;
 
@@ -45,7 +39,7 @@ import com.google.common.collect.FluentIterable;
  * Flavor
  * 
  *      
- * @author changyuan chen
+ * @author Changyuan Chen
  */
 public interface BucketApi {
    /**
@@ -56,13 +50,7 @@ public interface BucketApi {
    
    FluentIterable<Bucket> list();
    
-   /**
-    * Returns a Bucket by name
-    *
-    * @return Flavor
-    */
-  
-   //Bucket get(String bucketName);
+   
    /**
     * Returns a Flavor by id
     *
