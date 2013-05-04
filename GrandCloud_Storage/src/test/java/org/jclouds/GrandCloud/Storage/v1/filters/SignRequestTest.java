@@ -49,7 +49,7 @@ import com.google.inject.Module;
 
 /**
  * 
- * @author Adrian Cole
+ * @author Changyuan Chen
  */
 @Test(groups = "unit")
 public class SignRequestTest {

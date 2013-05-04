@@ -27,7 +27,7 @@ import org.jclouds.rest.internal.BaseRestApiExpectTest;
 /**
  * Base class for writing Nova Expect tests
  * 
- * @author Adrian Cole
+ * @author Changyuan Chen
  */
 public class BaseStorageExpectTest<T> extends BaseRestApiExpectTest<T> {
 

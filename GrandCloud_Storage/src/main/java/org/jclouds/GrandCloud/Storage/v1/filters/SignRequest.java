@@ -65,7 +65,7 @@ import com.google.common.io.ByteProcessor;
 /**
  * Signs the GrandCloud Online Storage request.
  * 
- * @author changych
+ * @author Changyuan Chen
  * 
  */
 @Singleton
