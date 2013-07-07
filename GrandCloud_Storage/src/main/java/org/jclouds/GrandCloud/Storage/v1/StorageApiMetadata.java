@@ -32,7 +32,7 @@ import com.google.common.collect.ImmutableSet;
 import com.google.inject.Module;
 
 /**
- * Implementation of {@link ApiMetadata} for RedDwarf API
+ * Implementation of {@link ApiMetadata} for GrandCloud API
  * 
  * @author Changyuan Chen
  */
@@ -61,7 +61,7 @@ public class StorageApiMetadata extends BaseHttpApiMetadata<StorageApi> {
       protected Builder() {         
           id("grandcloud-storage")
          .name("GrandCloud Storage API")
-         .identityName("${tenantName}:${userName} or ${userName}, if your keystone supports a default tenant")
+         .identityName("	${tenantName}:${userName} or ${userName}, if your keystone supports a default tenant")
          .credentialName("${password}")
          .endpointName("Keystone base URL ending in /v2.0/")
          .documentation(URI.create("http://api.openstack.org/"))

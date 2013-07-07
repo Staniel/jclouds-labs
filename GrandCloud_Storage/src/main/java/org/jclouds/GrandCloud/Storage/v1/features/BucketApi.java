@@ -21,6 +21,8 @@ package org.jclouds.grandcloud.storage.v1.features;
 
 import javax.inject.Named;
 import javax.ws.rs.GET;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
@@ -34,35 +36,54 @@ import org.jclouds.rest.annotations.RequestFilters;
 import com.google.common.collect.FluentIterable;
 
 /**
- * This API strictly for listing and retrieving Flavor. Flavors cannot be created or deleted.
- * @see org.jclouds.openstack.reddwarf.v1.domain.Flavor
- * Flavor
+ * This API strictly for listing and retrieving Bucket.
  * 
  *      
  * @author Changyuan Chen
  */
 public interface BucketApi {
    /**
-    * Returns a summary list of Buckets.
+    * Delete a Bucket by name.
     *
-    * @return The list of Flavors
+    * @return void
     */
    
-   FluentIterable<Bucket> list();
+	@Named("bucket:delete/{name}")
+	@DELETE
+	@Path("/{name}")
+	@Fallback(NullOnNotFoundOr404.class)
+	@JAXBResponseParser
+	@RequestFilters(SignRequest.class)
+	void delete(@PathParam("name") String bucketName);
+	
+	
+	/**
+	 * Delete a Bucket by name.
+	 *
+	 * @return void
+	 */
+	   
+	@Named("bucket:put/{name}")
+	@PUT
+	@Path("/{name}")
+	@Fallback(NullOnNotFoundOr404.class)
+	@JAXBResponseParser
+	@RequestFilters(SignRequest.class)
+	void create(@PathParam("name") String bucketName);
    
    
-   /**
-    * Returns a Flavor by id
-    *
-    * @return Flavor
-    */
-   @Named("bucket:get/{id}")
-   @GET
-   @Path("/{name}")
-   @Fallback(NullOnNotFoundOr404.class)
-   @JAXBResponseParser
-   @RequestFilters(SignRequest.class)
-   Bucket get(@PathParam("name") String bucketName);
+	/**
+	 * Returns a Bucket by name
+	 *
+	 * @return Bucket
+	 */
+	@Named("bucket:get/{name}")
+	@GET
+	@Path("/{name}")
+	@Fallback(NullOnNotFoundOr404.class)
+	@JAXBResponseParser
+	@RequestFilters(SignRequest.class)
+	Bucket get(@PathParam("name") String bucketName);
    
   
 }

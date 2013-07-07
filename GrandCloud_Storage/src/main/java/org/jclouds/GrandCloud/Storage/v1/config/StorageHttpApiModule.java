@@ -49,7 +49,7 @@ import com.google.common.collect.Multimap;
 import com.google.inject.Provides;
 
 /**
- * Configures the RedDwarf connection.
+ * Configures the GrandCloud connection.
  * 
  * @author Changyuan Chen
  */
@@ -58,7 +58,6 @@ public class StorageHttpApiModule extends HttpApiModule<StorageApi> {
    
    @Override
    protected void configure() {
-      //bind(DateAdapter.class).to(Iso8601DateAdapter.class);
 	   bind(XMLParser.class).to(StorageJAXBParser.class);
       super.configure();
    }

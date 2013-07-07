@@ -19,7 +19,7 @@
 package org.jclouds.grandcloud.storage.v1.xml.internal;
 
 /**
- * Wrapper for CreateVSYSResponse.
+ * Wrapper for CreateBucket Response.
  * 
  * @author Changyuan Chen
  */

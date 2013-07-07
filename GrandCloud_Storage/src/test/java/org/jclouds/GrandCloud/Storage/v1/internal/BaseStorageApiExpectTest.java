@@ -45,4 +45,15 @@ public class BaseStorageApiExpectTest extends BaseStorageExpectTest<StorageApi> 
 	            .build();
 	   }
 	
+	protected static HttpRequest buildDelete() {
+	      URI uri = URI.create("http://storage-huabei-1.sdcloud.cn/coopis/a.txt");
+	      return HttpRequest
+	            .builder()
+	            .method("DELETE")
+	            .addHeader(HttpHeaders.DATE, "Wed, 01 May 2013 15:48:12 GMT")
+	            .addHeader(HttpHeaders.AUTHORIZATION, "SNDA 2CKMD2SOZT0CC1INGWA4A0XC8:ggenoQzPeLbIBaUbNfEZ3lE0t6g=")
+	            .endpoint(uri)
+	            .build();
+	   }
+	
 }

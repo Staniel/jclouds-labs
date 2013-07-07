@@ -92,6 +92,28 @@ public class BucketApiExpectTest extends BaseStorageApiExpectTest {
 	   
    }
    
+   public void testDeleteBucket() {
+	   
+	   HttpRequest request = buildGET();
+	   
+	   HttpResponse response = HttpResponse
+	            .builder()
+	            .statusCode(200)
+	            .payload(
+	                  payloadFromResource("/bucket_get.xml"))	            
+	            .build();
+	   
+	   BucketApi api = requestSendsResponse(request, response)
+	            .getStorageApi();
+	   
+	   Bucket bucket = api.get("coopis");
+	   
+	   assertEquals(bucket.getName(), "coopis");
+	   assertEquals(bucket.getMaxKey(), 1000);
+	   assertEquals(bucket.isTruncated(), false);
+	   
+   }
+   
 //   public void testGetBucketByAccountId() {
 //	      URI endpoint = URI.create("http://172.16.0.1:8776/v1/3456/flavors/40806637803162");
 //	      StorageApi redDwarfApi = requestsSendResponses(

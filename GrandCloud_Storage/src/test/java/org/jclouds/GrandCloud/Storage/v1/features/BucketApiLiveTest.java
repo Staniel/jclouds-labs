@@ -66,22 +66,29 @@ public class BucketApiLiveTest extends BaseStorageApiLiveTest {
 //            assertTrue(flavorApi.list("9999").isEmpty());
 //        }
 //    }
+    
+    
+    //Useful Test//
 
     @Test
     public void testGetBucket() {
     	BucketApi bucketApi = api.getStorageApi();
-        Bucket bucket = bucketApi.get("coopis");
+        Bucket bucket = bucketApi.get("yourbucket");
         
-        assertEquals(bucket.getName(), "coopis");
+        assertEquals(bucket.getName(), "yourbucket");
      	assertEquals(bucket.getMaxKey(), 1000);
      	assertEquals(bucket.isTruncated(), false);
     }
 
-//    @Test
-//    public void testGetBucketWhenNotFound() {
-//        for (String zone : api.getConfiguredZones()) {
-//        	BucketApi flavorApi = api.getFlavorApiForZone(zone);
-//            assertNull(flavorApi.get(9999));
-//        }
-//    }   
+    @Test
+    public void testDeleteBucket() {
+        BucketApi bucketApi = api.getStorageApi();
+	    bucketApi.delete("zhigehaoshuai");
+    }  
+    
+    @Test
+    public void testCreateBucket() {
+        BucketApi bucketApi = api.getStorageApi();
+	    bucketApi.create("zhigehaoshuai");
+    }
 }

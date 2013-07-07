@@ -31,7 +31,7 @@ import com.google.common.base.Objects.ToStringHelper;
 import com.google.common.collect.ImmutableList;
 
 /**
- * An Openstack Reddwarf Flavor.
+ * An GrandCloud Storage Bucket.
  * 
  * @author Changyuan Chen
  */

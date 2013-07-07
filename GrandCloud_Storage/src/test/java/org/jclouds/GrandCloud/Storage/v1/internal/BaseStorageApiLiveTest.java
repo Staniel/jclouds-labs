@@ -21,7 +21,6 @@ package org.jclouds.grandcloud.storage.v1.internal;
 import java.util.Properties;
 
 import org.jclouds.apis.BaseApiLiveTest;
-import org.jclouds.openstack.keystone.v2_0.config.KeystoneProperties;
 import org.jclouds.grandcloud.storage.v1.StorageApi;
 
 /**
@@ -38,8 +37,6 @@ public class BaseStorageApiLiveTest extends BaseApiLiveTest<StorageApi> {
    @Override
    protected Properties setupProperties() {
       Properties props = super.setupProperties();
-      setIfTestSystemPropertyPresent(props, KeystoneProperties.CREDENTIAL_TYPE);
-      setIfTestSystemPropertyPresent(props, KeystoneProperties.SERVICE_TYPE);
       return props;
    }
    

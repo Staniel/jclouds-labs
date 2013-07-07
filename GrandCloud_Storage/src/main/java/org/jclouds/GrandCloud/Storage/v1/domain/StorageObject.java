@@ -12,7 +12,7 @@ import com.google.common.base.Objects.ToStringHelper;
 
 
 /**
- * An Openstack Reddwarf Flavor.
+ * An GrandCloud Storage Object.
  * 
  * @author Changyuan Chen
  */

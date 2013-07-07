@@ -82,7 +82,6 @@
                     <test.grandcloud-storage.build-version>${test.grandcloud-storage.build-version}</test.grandcloud-storage.build-version>
                     <test.grandcloud-storage.identity>${test.grandcloud-storage.identity}</test.grandcloud-storage.identity>
                     <test.grandcloud-storage.credential>${test.grandcloud-storage.credential}</test.grandcloud-storage.credential>
-                    <test.jclouds.keystone.credential-type>${test.jclouds.keystone.credential-type}</test.jclouds.keystone.credential-type>
                   </systemPropertyVariables>
                 </configuration>
               </execution>

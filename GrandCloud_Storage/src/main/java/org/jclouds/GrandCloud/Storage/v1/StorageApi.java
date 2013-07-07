@@ -27,7 +27,7 @@ import org.jclouds.rest.annotations.Delegate;
 import com.google.inject.Provides;
 
 /**
- * Provides access to RedDwarf.
+ * Provides access to GrandCloud.
  * 
  * @author Changyuan Chen
  */

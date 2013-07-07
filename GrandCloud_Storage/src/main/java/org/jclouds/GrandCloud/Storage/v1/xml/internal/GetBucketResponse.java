@@ -25,7 +25,7 @@ import org.jclouds.grandcloud.storage.v1.domain.Bucket;
 
 
 /**
- * Wrapper for GetVDiskAttributesResponse.
+ * Wrapper for GetBucket Response.
  * 
  * @author Changyuan Chen
  */
