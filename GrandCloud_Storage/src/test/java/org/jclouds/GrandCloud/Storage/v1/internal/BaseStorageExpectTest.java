@@ -21,7 +21,7 @@ package org.jclouds.grandcloud.storage.v1.internal;
 import javax.ws.rs.core.MediaType;
 import org.jclouds.http.HttpRequest;
 import org.jclouds.http.HttpResponse;
-import org.jclouds.openstack.keystone.v2_0.internal.KeystoneFixture;
+//import org.jclouds.openstack.keystone.v2_0.internal.KeystoneFixture;
 import org.jclouds.rest.internal.BaseRestApiExpectTest;
 
 /**
